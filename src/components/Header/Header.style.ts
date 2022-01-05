@@ -11,7 +11,7 @@ export const StyledAppBar = styled(AppBar)`
 `;
 
 export const MainTitle = styled.h1`
-  letter-spacing: 0.15ch;
+  letter-spacing: 0.1ch;
 
   &:hover {
     text-decoration: underline;
