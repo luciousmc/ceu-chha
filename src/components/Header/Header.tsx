@@ -1,9 +1,15 @@
 import { HeaderContainer } from './Header.style';
+import Box from '@mui/material/Box';
+import { StyledAppBar } from './Header.style';
 
 function Header() {
   return (
     <HeaderContainer>
-      <h1>I am the Header</h1>
+      <Box>
+        <StyledAppBar>
+          <h1>Coast Health Career College CEU Registration</h1>
+        </StyledAppBar>
+      </Box>
     </HeaderContainer>
   );
 }

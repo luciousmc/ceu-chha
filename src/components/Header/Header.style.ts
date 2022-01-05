@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import AppBar from '@mui/material/AppBar';
 
-export const HeaderContainer = styled.header`
-  width: 100%;
-  height: 80px;
-  background-color: purple;
+export const HeaderContainer = styled.header``;
+
+export const StyledAppBar = styled(AppBar)`
+  padding: 20px;
 `;
