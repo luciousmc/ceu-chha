@@ -1,13 +1,21 @@
-import { HeaderContainer } from './Header.style';
+// Styled Components
+import { HeaderContainer, MainTitle, StyledAppBar } from './Header.style';
+
+// Material UI Components
 import Box from '@mui/material/Box';
-import { StyledAppBar } from './Header.style';
+
+// React Router
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
+  const navigate = useNavigate();
   return (
     <HeaderContainer>
       <Box>
         <StyledAppBar>
-          <h1>Coast Health Career College CEU Registration</h1>
+          <MainTitle onClick={() => navigate('/')}>
+            Coast Health Career College CEU Registration
+          </MainTitle>
         </StyledAppBar>
       </Box>
     </HeaderContainer>
