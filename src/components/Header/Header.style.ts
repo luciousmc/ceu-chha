@@ -5,4 +5,5 @@ export const HeaderContainer = styled.header``;
 
 export const StyledAppBar = styled(AppBar)`
   padding: 20px;
+  position: sticky;
 `;
