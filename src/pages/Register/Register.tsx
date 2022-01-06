@@ -2,7 +2,7 @@
 import { Grid, TextField, Typography } from '@mui/material';
 
 // Types
-import { studentInfo } from '../types/studentInfo';
+import { studentInfo } from '../../types/studentInfo';
 
 // Styled Components
 import { RegisterContainer } from './Register.style';
