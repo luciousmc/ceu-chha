@@ -1,4 +1,4 @@
-// Styled Components
+// Material UI Components
 import { Grid, TextField, Typography } from '@mui/material';
 
 // Types
