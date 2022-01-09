@@ -15,11 +15,12 @@ export const HomeContainer = styled.div`
 export const LoginForm = styled.form``;
 
 export const LoginButton = styled(Button)`
-  margin: 20px auto !important;
+  margin: 30px auto !important;
   width: 100%;
 `;
 
 export const LoginDivider = styled.p`
+  color: #888;
   text-align: center;
 `;
 
@@ -28,3 +29,5 @@ export const RegisterText = styled.p`
   color: #888;
   text-align: center;
 `;
+
+export const RegisterLink = styled(Button)``;
