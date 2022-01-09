@@ -1,9 +1,7 @@
 // React
-import { useRef } from 'react';
-
+import { useRef, useState } from 'react';
 // React Router
 import { useNavigate } from 'react-router-dom';
-
 // Material UI Components
 import {
   Typography,
@@ -11,11 +9,9 @@ import {
   FormControl,
   InputAdornment,
 } from '@mui/material';
-
 // Icons
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
-
 // StyledComponents
 import {
   HomeContainer,
@@ -25,9 +21,11 @@ import {
   RegisterLink,
   RegisterText,
 } from './Home.style';
+// Service Functions
 import { createUser } from '../../services/firebase';
 
 function Home() {
+  const [btnIsLoading, setBtnIsLoading] = useState(false);
   const navigate = useNavigate();
 
   // User input Refs
@@ -37,16 +35,25 @@ function Home() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    setBtnIsLoading(true);
+
     console.table({
       userNameRef: userNameRef.current?.value,
       passwordRef: passwordRef.current?.value,
     });
 
-    const user = await createUser(
-      userNameRef.current?.value!,
-      passwordRef.current?.value!
-    );
-    console.log(`user`, user);
+    if (userNameRef.current !== null && passwordRef.current !== null) {
+      const user = await createUser(
+        userNameRef.current.value,
+        passwordRef.current.value
+      );
+      userNameRef.current.value = '';
+      passwordRef.current.value = '';
+
+      setBtnIsLoading(false);
+
+      console.log(`user`, user);
+    }
   };
 
   return (
@@ -96,7 +103,7 @@ function Home() {
           />
         </FormControl>
 
-        <LoginButton type='submit' variant='contained'>
+        <LoginButton loading={btnIsLoading} type='submit' variant='contained'>
           Login
         </LoginButton>
       </LoginForm>

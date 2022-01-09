@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 // Material UI Components
 import Button from '@mui/material/Button';
+import LoadingButton from '@mui/lab/LoadingButton';
 
 export const HomeContainer = styled.div`
   width: 400px;
@@ -14,7 +15,7 @@ export const HomeContainer = styled.div`
 
 export const LoginForm = styled.form``;
 
-export const LoginButton = styled(Button)`
+export const LoginButton = styled(LoadingButton)`
   margin: 30px auto !important;
   width: 100%;
 `;
