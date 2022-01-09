@@ -1,3 +1,6 @@
+// React
+import { useRef } from 'react';
+
 // React Router
 import { useNavigate } from 'react-router-dom';
 
@@ -22,11 +25,11 @@ import {
   RegisterLink,
   RegisterText,
 } from './Home.style';
-import { useRef } from 'react';
 
 function Home() {
   const navigate = useNavigate();
 
+  // User input Refs
   const userNameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
