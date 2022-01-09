@@ -22,13 +22,26 @@ import {
   RegisterLink,
   RegisterText,
 } from './Home.style';
+import { useRef } from 'react';
 
 function Home() {
   const navigate = useNavigate();
 
+  const userNameRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    console.table({
+      userNameRef: userNameRef.current?.value,
+      passwordRef: passwordRef.current?.value,
+    });
+  };
+
   return (
     <HomeContainer>
-      <LoginForm>
+      <LoginForm onSubmit={handleSubmit}>
         <Typography
           variant='h2'
           sx={{ fontSize: '3rem', color: '#777' }}
@@ -40,6 +53,7 @@ function Home() {
 
         <FormControl fullWidth margin='normal'>
           <TextField
+            inputRef={userNameRef}
             variant='standard'
             id='username'
             placeholder='Username'
@@ -50,11 +64,13 @@ function Home() {
                 </InputAdornment>
               ),
             }}
+            required
           />
         </FormControl>
 
         <FormControl fullWidth margin='normal'>
           <TextField
+            inputRef={passwordRef}
             type='password'
             variant='standard'
             id='password'
@@ -66,10 +82,13 @@ function Home() {
                 </InputAdornment>
               ),
             }}
+            required
           />
         </FormControl>
 
-        <LoginButton variant='contained'>Login</LoginButton>
+        <LoginButton type='submit' variant='contained'>
+          Login
+        </LoginButton>
       </LoginForm>
 
       <LoginDivider>---- or ----</LoginDivider>
