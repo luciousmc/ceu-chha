@@ -1,5 +1,8 @@
+import { Typography, Button } from '@mui/material';
 import {
   HomeContainer,
+  InputContainer,
+  LoginButton,
   LoginDivider,
   LoginForm,
   RegisterText,
@@ -9,17 +12,30 @@ function Home() {
   return (
     <HomeContainer>
       <LoginForm>
-        <label>
-          Username: <br />
+        <Typography
+          variant='h2'
+          sx={{ fontSize: '3rem', color: '#777' }}
+          textAlign={'center'}
+          gutterBottom
+        >
+          Student Login
+        </Typography>
+        {/* <label>
+          Username: <br /> */}
+        <InputContainer>
           <input type='text' placeholder='Username' />
-        </label>
+        </InputContainer>
+        {/* </label> */}
 
-        <label>
-          Password: <br />
+        {/* <label>
+          Password: <br /> */}
+        <InputContainer>
           <input type='text' placeholder='Password' />
-        </label>
+        </InputContainer>
+        {/* </label> */}
 
-        <input type='submit' value='Login' />
+        {/* <input type='submit' value='Login' /> */}
+        <LoginButton variant='contained'>Login</LoginButton>
       </LoginForm>
 
       <LoginDivider>---- or ----</LoginDivider>
