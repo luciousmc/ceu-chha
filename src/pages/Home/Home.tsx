@@ -25,6 +25,7 @@ import {
   RegisterLink,
   RegisterText,
 } from './Home.style';
+import { createUser } from '../../services/firebase';
 
 function Home() {
   const navigate = useNavigate();
@@ -33,13 +34,19 @@ function Home() {
   const userNameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     console.table({
       userNameRef: userNameRef.current?.value,
       passwordRef: passwordRef.current?.value,
     });
+
+    const user = await createUser(
+      userNameRef.current?.value!,
+      passwordRef.current?.value!
+    );
+    console.log(`user`, user);
   };
 
   return (
