@@ -15,7 +15,6 @@ export const GlobalStyles = createGlobalStyle`
 export const MainContainer = styled.main`
   display: flex;
   justify-content: center;
-  align-items: center;
   min-height: 80vh;
   padding: 30px;
 `;
