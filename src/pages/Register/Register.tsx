@@ -2,24 +2,24 @@
 import { Grid, TextField, Typography } from '@mui/material';
 
 // Types
-import { studentInfo } from '../../types/studentInfo';
+import { personalInfo } from '../../types/studentInfo';
 
 // Styled Components
 import { RegisterContainer } from './Register.style';
 
 function Register({
-  firstNameVal,
-  middleInitialVal,
-  lastNameVal,
-  birthDateVal,
-  ssnVal,
-  addressVal,
-  cityVal,
-  stateVal,
-  zipCodeVal,
-  emailVal,
-  phoneVal,
-}: studentInfo) {
+  firstName,
+  middleInitial,
+  lastName,
+  birthDate,
+  ssn,
+  address,
+  city,
+  state,
+  zipCode,
+  email,
+  phoneNumber,
+}: personalInfo) {
   const handleChange = () => {};
 
   return (
@@ -45,7 +45,7 @@ function Register({
               label='First Name'
               id='firstName'
               onChange={handleChange}
-              value={firstNameVal}
+              value={firstName}
               fullWidth
             />
           </Grid>
@@ -55,7 +55,7 @@ function Register({
               label='M.I.'
               id='middleInitial'
               onChange={handleChange}
-              value={middleInitialVal}
+              value={middleInitial}
             />
           </Grid>
           <Grid item xs={12} sm={5}>
@@ -65,7 +65,7 @@ function Register({
               label='Last Name'
               id='lastName'
               onChange={handleChange}
-              value={lastNameVal}
+              value={lastName}
               fullWidth
             />
           </Grid>
@@ -79,7 +79,7 @@ function Register({
               label='Birth Date'
               id='birthDate'
               onChange={handleChange}
-              value={birthDateVal}
+              value={birthDate}
               fullWidth
             />
           </Grid>
@@ -90,7 +90,7 @@ function Register({
               label='Social Security #'
               id='ssn'
               onChange={handleChange}
-              value={ssnVal}
+              value={ssn}
               fullWidth
             />
           </Grid>
@@ -102,7 +102,7 @@ function Register({
               label='Address'
               id='address'
               onChange={handleChange}
-              value={addressVal}
+              value={address}
               fullWidth
             />
           </Grid>
@@ -114,7 +114,7 @@ function Register({
               label='City'
               id='city'
               onChange={handleChange}
-              value={cityVal}
+              value={city}
               fullWidth
             />
           </Grid>
@@ -125,7 +125,7 @@ function Register({
               label='State'
               id='state'
               onChange={handleChange}
-              value={stateVal}
+              value={state}
               fullWidth
             />
           </Grid>
@@ -136,7 +136,7 @@ function Register({
               label='Zip Code'
               id='zipCode'
               onChange={handleChange}
-              value={zipCodeVal}
+              value={zipCode}
               fullWidth
             />
           </Grid>
@@ -147,7 +147,7 @@ function Register({
               label='Email'
               id='email'
               onChange={handleChange}
-              value={emailVal}
+              value={email}
               fullWidth
             />
           </Grid>
@@ -158,7 +158,7 @@ function Register({
               label='Tel #'
               id='phone'
               onChange={handleChange}
-              value={phoneVal}
+              value={phoneNumber}
               fullWidth
             />
           </Grid>

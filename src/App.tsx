@@ -12,8 +12,10 @@ import { GlobalStyles, MainContainer } from './App.style';
 import Header from './components/Header';
 
 // Page imports
+const Home = lazy(() => import('./pages/Home'));
 const Landing = lazy(() => import('./pages/Landing'));
 const Register = lazy(() => import('./pages/Register'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 function App() {
   return (
@@ -24,8 +26,10 @@ function App() {
         <MainContainer>
           <Suspense fallback={<h1>Loading...</h1>}>
             <Routes>
+              <Route path={ROUTES.HOME} element={<Home />} />
               <Route path={ROUTES.LANDING} element={<Landing />} />
               <Route path={ROUTES.REGISTER} element={<Register />} />
+              <Route element={<NotFound />} />
             </Routes>
           </Suspense>
         </MainContainer>
