@@ -1,5 +1,10 @@
 // Styled Components
-import { HeaderContainer, MainTitle, StyledAppBar } from './Header.style';
+import {
+  HeaderContainer,
+  LogoImg,
+  MainTitle,
+  StyledAppBar,
+} from './Header.style';
 
 // Material UI Components
 import Box from '@mui/material/Box';
@@ -7,15 +12,22 @@ import Box from '@mui/material/Box';
 // React Router
 import { useNavigate } from 'react-router-dom';
 
+// Images
+import Logo from '../../../images/CHCC.jpg';
+import { Toolbar } from '@mui/material';
+
 function Header() {
   const navigate = useNavigate();
   return (
     <HeaderContainer>
       <Box>
         <StyledAppBar>
-          <MainTitle onClick={() => navigate('/')}>
-            Coast Health Career College CEU Registration
-          </MainTitle>
+          <Toolbar>
+            <LogoImg src={Logo} alt='Logo' />
+            <MainTitle onClick={() => navigate('/')}>
+              Coast Health Career College CEU Registration
+            </MainTitle>
+          </Toolbar>
         </StyledAppBar>
       </Box>
     </HeaderContainer>

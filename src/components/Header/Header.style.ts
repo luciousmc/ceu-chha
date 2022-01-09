@@ -10,7 +10,13 @@ export const StyledAppBar = styled(AppBar)`
   position: sticky;
 `;
 
+export const LogoImg = styled.img`
+  width: 50px;
+`;
+
 export const MainTitle = styled.h1`
+  margin-left: 25px;
+
   &:hover {
     text-decoration: underline;
     cursor: pointer;
