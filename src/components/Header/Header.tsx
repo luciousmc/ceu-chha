@@ -25,7 +25,7 @@ function Header() {
           <Toolbar>
             <LogoImg src={Logo} alt='Logo' />
             <MainTitle onClick={() => navigate('/')}>
-              Coast Health Career College CEU Registration
+              Class Registration
             </MainTitle>
           </Toolbar>
         </StyledAppBar>
