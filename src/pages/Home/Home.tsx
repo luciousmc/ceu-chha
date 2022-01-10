@@ -35,14 +35,9 @@ function Home() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setBtnIsLoading(true);
-
-    console.table({
-      userNameRef: userNameRef.current?.value,
-      passwordRef: passwordRef.current?.value,
-    });
-
     if (userNameRef.current !== null && passwordRef.current !== null) {
+      setBtnIsLoading(true);
+
       const user = await createUser(
         userNameRef.current.value,
         passwordRef.current.value
@@ -51,8 +46,6 @@ function Home() {
       passwordRef.current.value = '';
 
       setBtnIsLoading(false);
-
-      console.log(`user`, user);
     }
   };
 
