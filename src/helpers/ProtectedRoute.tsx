@@ -1,15 +1,20 @@
-import { User } from 'firebase/auth';
-import { ReactNode } from 'react';
+// React
+import { useContext } from 'react';
+
+// React Router
 import { Navigate, useLocation } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 
+// Context
+import UserContext from '../context/userContext';
+
 interface Props {
-  user: User;
-  children: ReactNode;
+  children: JSX.Element;
 }
 
-function ProtectedRoute({ user, children }: Props) {
+function ProtectedRoute({ children }: Props) {
   const location = useLocation();
+  const user = useContext(UserContext);
 
   if (!user) {
     return <Navigate to={ROUTES.HOME} state={{ from: location }} replace />;

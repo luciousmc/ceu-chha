@@ -1,7 +1,9 @@
 // React
 import { useRef, useState } from 'react';
+
 // React Router
 import { useNavigate } from 'react-router-dom';
+
 // Material UI Components
 import {
   Typography,
@@ -9,11 +11,14 @@ import {
   FormControl,
   InputAdornment,
 } from '@mui/material';
+
 // Icons
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
+
 // StyledComponents
 import {
+  ErrorMessage,
   HomeContainer,
   LoginButton,
   LoginDivider,
@@ -21,11 +26,13 @@ import {
   RegisterLink,
   RegisterText,
 } from './Home.style';
+
 // Service Functions
-import { createUser } from '../../services/firebase';
+import { signInUser } from '../../services/firebase';
 
 function Home() {
   const [btnIsLoading, setBtnIsLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
   const navigate = useNavigate();
 
   // User input Refs
@@ -38,14 +45,20 @@ function Home() {
     if (userNameRef.current !== null && passwordRef.current !== null) {
       setBtnIsLoading(true);
 
-      const user = await createUser(
+      const resultError = await signInUser(
         userNameRef.current.value,
         passwordRef.current.value
       );
-      userNameRef.current.value = '';
-      passwordRef.current.value = '';
 
-      setBtnIsLoading(false);
+      if (resultError) {
+        setErrorMsg(resultError);
+        setBtnIsLoading(false);
+      } else {
+        userNameRef.current.value = '';
+        passwordRef.current.value = '';
+        setBtnIsLoading(false);
+        navigate('/dashboard');
+      }
     }
   };
 
@@ -95,6 +108,12 @@ function Home() {
             required
           />
         </FormControl>
+
+        {errorMsg && (
+          <ErrorMessage color='error' variant='subtitle2' textAlign='center'>
+            {errorMsg}
+          </ErrorMessage>
+        )}
 
         <LoginButton loading={btnIsLoading} type='submit' variant='contained'>
           Login
