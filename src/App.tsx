@@ -17,6 +17,7 @@ import useAuthListener from './hooks/useAuthListener';
 
 // Context
 import UserContext from './context/userContext';
+import AuthUserRedirect from './helpers/AuthUserRedirect';
 
 // Page imports
 const Home = lazy(() => import('./pages/Home'));
@@ -36,8 +37,22 @@ function App() {
           <MainContainer>
             <Suspense fallback={<h1>Loading...</h1>}>
               <Routes>
-                <Route path={ROUTES.HOME} element={<Home />} />
-                <Route path={ROUTES.REGISTER} element={<Register />} />
+                <Route
+                  path={ROUTES.HOME}
+                  element={
+                    <AuthUserRedirect redirectPath={ROUTES.DASHBOARD}>
+                      <Home />
+                    </AuthUserRedirect>
+                  }
+                />
+                <Route
+                  path={ROUTES.REGISTER}
+                  element={
+                    <AuthUserRedirect redirectPath={ROUTES.DASHBOARD}>
+                      <Register />
+                    </AuthUserRedirect>
+                  }
+                />
                 <Route
                   path={ROUTES.DASHBOARD}
                   element={

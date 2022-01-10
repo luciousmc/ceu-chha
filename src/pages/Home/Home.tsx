@@ -57,7 +57,7 @@ function Home() {
         userNameRef.current.value = '';
         passwordRef.current.value = '';
         setBtnIsLoading(false);
-        navigate('/dashboard');
+        navigate('/dashboard', { replace: true });
       }
     }
   };
