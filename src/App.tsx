@@ -17,6 +17,8 @@ import useAuthListener from './hooks/useAuthListener';
 
 // Context
 import UserContext from './context/userContext';
+
+// Helper Functions
 import AuthUserRedirect from './helpers/AuthUserRedirect';
 
 // Page imports
