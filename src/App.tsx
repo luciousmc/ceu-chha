@@ -10,13 +10,20 @@ import { GlobalStyles, MainContainer } from './App.style';
 
 // Components
 import Header from './components/Header';
+import ProtectedRoute from './helpers/ProtectedRoute';
+
+// Hooks
+import useAuthListener from './hooks/useAuthListener';
 
 // Page imports
 const Home = lazy(() => import('./pages/Home'));
 const Register = lazy(() => import('./pages/Register'));
+const Dashboard = lazy(() => import('./pages/Dashboard'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function App() {
+  const { user } = useAuthListener();
+
   return (
     <div className='App'>
       <GlobalStyles />
@@ -27,7 +34,15 @@ function App() {
             <Routes>
               <Route path={ROUTES.HOME} element={<Home />} />
               <Route path={ROUTES.REGISTER} element={<Register />} />
-              <Route element={<NotFound />} />
+              <Route
+                path={ROUTES.DASHBOARD}
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path='*' element={<NotFound />} />
             </Routes>
           </Suspense>
         </MainContainer>
