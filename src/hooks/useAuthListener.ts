@@ -3,7 +3,9 @@ import { useEffect, useState } from 'react';
 import { auth } from '../lib/firebase';
 
 export default function useAuthListener() {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(
+    JSON.parse(localStorage.getItem('authUser')!)
+  );
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
