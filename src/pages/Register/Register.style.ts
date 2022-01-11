@@ -1,5 +1,3 @@
 import styled from 'styled-components';
 
-export const RegisterContainer = styled.div`
-  width: 800px;
-`;
+export const RegisterContainer = styled.div``;
