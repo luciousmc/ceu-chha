@@ -11,7 +11,7 @@ import { RegisterContainer } from './Register.style';
 const Register = () => {
   return (
     <RegisterContainer>
-      <Paper>
+      <Paper sx={{ padding: '15px' }}>
         <Typography variant='h4' align='center' gutterBottom>
           Register
         </Typography>
