@@ -8,13 +8,10 @@ import {
 
 // Material UI Components
 import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
 
 // React Router
 import { useNavigate } from 'react-router-dom';
-
-// Images
-import Logo from '../../../images/CHCC.jpg';
-import { Toolbar } from '@mui/material';
 
 function Header() {
   const navigate = useNavigate();
@@ -23,7 +20,7 @@ function Header() {
       <Box>
         <StyledAppBar>
           <Toolbar>
-            <LogoImg src={Logo} alt='Logo' />
+            <LogoImg src='/images/CHCC.jpg' alt='Logo' />
             <MainTitle onClick={() => navigate('/')}>
               Class Registration
             </MainTitle>
