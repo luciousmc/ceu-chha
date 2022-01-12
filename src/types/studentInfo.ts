@@ -1,18 +1,18 @@
-export type personalInfo = {
+export type personalInfoType = {
   firstName: string;
   middleInitial?: string;
   lastName: string;
   birthDate: string;
-  ssn: number;
+  ssn: string;
   address: string;
   city: string;
   state: string;
-  zipCode: number;
+  zipCode: string;
   email: string;
   phoneNumber: string;
 };
 
-export type workInfo = {
+export type workInfoType = {
   employerName?: string;
   address?: string;
   city?: string;
@@ -31,9 +31,11 @@ type chhaLicense = {
   chha_license_exp_date: string;
 };
 
-export type certificateInfo =
+export type certificateInfoType =
   | ceuLicense
   | chhaLicense
   | (ceuLicense & chhaLicense);
 
-export type studentInfo = personalInfo & workInfo & certificateInfo;
+export type studentInfoType = personalInfoType &
+  workInfoType &
+  certificateInfoType;

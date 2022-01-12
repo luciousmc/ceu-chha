@@ -19,8 +19,13 @@ const Register = () => {
     <RegisterInfoProvider>
       <RegisterContainer>
         <Paper sx={{ padding: '15px' }}>
-          <Typography variant='h4' align='center' gutterBottom>
-            Register
+          <Typography
+            variant='h2'
+            sx={{ fontSize: '2rem' }}
+            align='center'
+            gutterBottom
+          >
+            Create an Account
           </Typography>
           <RegistrationStepper />
         </Paper>

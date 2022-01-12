@@ -1,26 +1,28 @@
 // Material UI Components
 import { Grid, TextField, Typography } from '@mui/material';
-
-// Types
-import { personalInfo } from '../../../types/studentInfo';
+import useFormValues from '../../../hooks/useFormValues';
+import { personalInfoType } from '../../../types/studentInfo';
 
 // Styled Components
 import { PersonalInfoFormContainer } from './PersonalInfoForm.style';
 
-function PersonalInfoForm({
-  firstName,
-  middleInitial,
-  lastName,
-  birthDate,
-  ssn,
-  address,
-  city,
-  state,
-  zipCode,
-  email,
-  phoneNumber,
-}: personalInfo) {
-  const handleChange = () => {};
+const INITIAL_STATE = {
+  firstName: '',
+  lastName: '',
+  middleInitial: '',
+  ssn: '',
+  email: '',
+  address: '',
+  city: '',
+  state: '',
+  zipCode: '',
+  birthDate: '',
+  phoneNumber: '',
+};
+
+function PersonalInfoForm() {
+  const [personalInfo, handleChange] =
+    useFormValues<personalInfoType>(INITIAL_STATE);
 
   return (
     <PersonalInfoFormContainer>
@@ -45,7 +47,7 @@ function PersonalInfoForm({
               label='First Name'
               id='firstName'
               onChange={handleChange}
-              value={firstName}
+              value={personalInfo.firstName}
               fullWidth
             />
           </Grid>
@@ -55,7 +57,7 @@ function PersonalInfoForm({
               label='M.I.'
               id='middleInitial'
               onChange={handleChange}
-              value={middleInitial}
+              value={personalInfo.middleInitial}
             />
           </Grid>
           <Grid item xs={12} sm={5}>
@@ -65,7 +67,7 @@ function PersonalInfoForm({
               label='Last Name'
               id='lastName'
               onChange={handleChange}
-              value={lastName}
+              value={personalInfo.lastName}
               fullWidth
             />
           </Grid>
@@ -79,7 +81,7 @@ function PersonalInfoForm({
               label='Birth Date'
               id='birthDate'
               onChange={handleChange}
-              value={birthDate}
+              value={personalInfo.birthDate}
               fullWidth
             />
           </Grid>
@@ -90,7 +92,7 @@ function PersonalInfoForm({
               label='Social Security #'
               id='ssn'
               onChange={handleChange}
-              value={ssn}
+              value={personalInfo.ssn}
               fullWidth
             />
           </Grid>
@@ -102,7 +104,7 @@ function PersonalInfoForm({
               label='Address'
               id='address'
               onChange={handleChange}
-              value={address}
+              value={personalInfo.address}
               fullWidth
             />
           </Grid>
@@ -114,7 +116,7 @@ function PersonalInfoForm({
               label='City'
               id='city'
               onChange={handleChange}
-              value={city}
+              value={personalInfo.city}
               fullWidth
             />
           </Grid>
@@ -125,7 +127,7 @@ function PersonalInfoForm({
               label='State'
               id='state'
               onChange={handleChange}
-              value={state}
+              value={personalInfo.state}
               fullWidth
             />
           </Grid>
@@ -136,7 +138,7 @@ function PersonalInfoForm({
               label='Zip Code'
               id='zipCode'
               onChange={handleChange}
-              value={zipCode}
+              value={personalInfo.zipCode}
               fullWidth
             />
           </Grid>
@@ -147,7 +149,7 @@ function PersonalInfoForm({
               label='Email'
               id='email'
               onChange={handleChange}
-              value={email}
+              value={personalInfo.email}
               fullWidth
             />
           </Grid>
@@ -158,7 +160,7 @@ function PersonalInfoForm({
               label='Tel #'
               id='phone'
               onChange={handleChange}
-              value={phoneNumber}
+              value={personalInfo.phoneNumber}
               fullWidth
             />
           </Grid>

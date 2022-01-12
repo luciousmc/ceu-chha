@@ -44,23 +44,6 @@ const getStepContent = (stepId: number) => {
   }
 };
 
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     width: '100%',
-//   },
-//   backButton: {
-//     marginRight: theme.spacing(1),
-//   },
-//   instructions: {
-//     marginTop: theme.spacing(1),
-//     marginBottom: theme.spacing(1),
-//   },
-//   renderForm: {
-//     display: 'flex',
-//     justifyContent: 'center',
-//   },
-// }));
-
 const RegistrationStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
