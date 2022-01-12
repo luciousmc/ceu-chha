@@ -16,7 +16,7 @@ import ProtectedRoute from './helpers/ProtectedRoute';
 import useAuthListener from './hooks/useAuthListener';
 
 // Context
-import UserContext from './context/userContext';
+import { AuthUserProvider } from './context/userContext';
 
 // Helper Functions
 import AuthUserRedirect from './helpers/AuthUserRedirect';
@@ -33,7 +33,7 @@ function App() {
   return (
     <div className='App'>
       <GlobalStyles />
-      <UserContext.Provider value={user}>
+      <AuthUserProvider user={user!}>
         <BrowserRouter>
           <Header />
           <MainContainer>
@@ -68,7 +68,7 @@ function App() {
             </Suspense>
           </MainContainer>
         </BrowserRouter>
-      </UserContext.Provider>
+      </AuthUserProvider>
     </div>
   );
 }
