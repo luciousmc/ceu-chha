@@ -8,7 +8,7 @@ export type personalInfoType = {
   city: string;
   state: string;
   zipCode: string;
-  email: string;
+  email?: string;
   phoneNumber: string;
 };
 
