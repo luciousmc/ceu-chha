@@ -10,7 +10,6 @@ import { GlobalStyles, MainContainer } from './App.style';
 
 // Components
 import Header from './components/Header';
-import ProtectedRoute from './helpers/ProtectedRoute';
 
 // Hooks
 import useAuthListener from './hooks/useAuthListener';
@@ -19,6 +18,7 @@ import useAuthListener from './hooks/useAuthListener';
 import { AuthUserProvider } from './context/userContext';
 
 // Helper Functions
+import ProtectedRoute from './helpers/ProtectedRoute';
 import AuthUserRedirect from './helpers/AuthUserRedirect';
 
 // Page imports

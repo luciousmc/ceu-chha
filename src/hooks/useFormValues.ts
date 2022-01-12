@@ -8,10 +8,10 @@ function useFormValues<T>(
   const handleChange = ({
     target: { name, value },
   }: ChangeEvent<HTMLInputElement>) => {
-    setValues({
-      ...values,
+    setValues((currValues) => ({
+      ...currValues,
       [name]: value,
-    });
+    }));
   };
 
   return [values, handleChange];
