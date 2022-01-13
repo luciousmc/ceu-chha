@@ -1,5 +1,7 @@
 // Material UI Components
 import { Grid, TextField, Typography } from '@mui/material';
+import { useEffect, useRef, useState } from 'react';
+import { Prompt } from 'react-router-dom';
 import useFormValues from '../../../hooks/useFormValues';
 import { personalInfoType } from '../../../types/studentInfo';
 
@@ -21,11 +23,16 @@ const INITIAL_STATE = {
 };
 
 function PersonalInfoForm() {
+  const [isFormIncomplete, setIsFormIncomplete] = useState(true);
   const [personalInfo, handleChange] =
     useFormValues<personalInfoType>(INITIAL_STATE);
 
   return (
     <PersonalInfoFormContainer>
+      <Prompt
+        when={isFormIncomplete}
+        message='Are you Sure you want to leave?'
+      />
       <form>
         <Grid container spacing={3}>
           <Grid item xs={12}>
