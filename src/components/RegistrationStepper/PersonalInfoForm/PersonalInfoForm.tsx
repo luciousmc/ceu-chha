@@ -1,6 +1,12 @@
 // Material UI Components
-import { Grid, TextField, Typography } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+
+// Hooks
 import useFormValues from '../../../hooks/useFormValues';
+
+// Types
 import { personalInfoType } from '../../../types/studentInfo';
 
 // Styled Components
