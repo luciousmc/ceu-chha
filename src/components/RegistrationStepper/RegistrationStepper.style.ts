@@ -5,3 +5,7 @@ export const RegistrationStepperContainer = styled.div``;
 export const StepContainer = styled.div`
   padding-top: 35px;
 `;
+
+export const StepContent = styled.div`
+  padding-top: 35px;
+`;

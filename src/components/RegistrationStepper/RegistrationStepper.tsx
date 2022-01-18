@@ -16,8 +16,11 @@ import WorkInfoForm from './WorkInfoForm';
 import CertificateInfoForm from './CertificateInfoForm';
 import ReviewInfo from './ReviewInfo/ReviewInfo';
 
+// Styled Components
+import { StepContainer, StepContent } from './RegistrationStepper.style';
+
+// Types
 import type { UseRegisterInfoType } from '../../types/useRegisterInfo';
-import { StepContainer } from './RegistrationStepper.style';
 
 function RegistrationStepper() {
   const [activeStep, setActiveStep] = useState(0);
@@ -60,7 +63,6 @@ function RegistrationStepper() {
 
   return (
     <StepContainer>
-      <h1>Stepper Manual</h1>
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((step) => (
           <Step key={step}>
@@ -76,7 +78,7 @@ function RegistrationStepper() {
           </Button>
         </div>
       ) : (
-        <div>{getStepContent(activeStep)}</div>
+        <StepContent>{getStepContent(activeStep)}</StepContent>
       )}
 
       <Button onClick={handleNext}>Next</Button>
