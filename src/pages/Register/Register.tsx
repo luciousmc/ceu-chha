@@ -13,7 +13,6 @@ import { RegisterInfoProvider } from '../../context/registerInfo';
 
 // Styled Components
 import { RegisterContainer } from './Register.style';
-import RegistrationStepperMan from '../../components/RegistrationStepper/RegistrationStepperMan';
 
 const Register = () => {
   return (
@@ -28,8 +27,7 @@ const Register = () => {
           >
             Create an Account
           </Typography>
-          {/* <RegistrationStepper /> */}
-          <RegistrationStepperMan />
+          <RegistrationStepper />
         </Paper>
       </RegisterContainer>
     </RegisterInfoProvider>

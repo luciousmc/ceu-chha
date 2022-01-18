@@ -3,14 +3,8 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
-// Hooks
-import useFormValues from '../../../hooks/useFormValues';
-
 // Types
-import type {
-  personalInfoType,
-  studentInfoType,
-} from '../../../types/studentInfo';
+import type { studentInfoType } from '../../../types/studentInfo';
 import type { ChangeEvent, Dispatch, SetStateAction } from 'react';
 
 // Styled Components
@@ -32,14 +26,10 @@ const INITIAL_STATE = {
 
 interface Props {
   formValues: studentInfoType;
-  // handleChange: React.ChangeEventHandler<HTMLInputElement>;
   setValues: Dispatch<SetStateAction<studentInfoType>>;
 }
 
 function PersonalInfoForm({ formValues, setValues }: Props) {
-  // const [personalInfo, handleChange] =
-  //   useFormValues<personalInfoType>(INITIAL_STATE);
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.name);
     setValues((prevState) => ({
