@@ -16,7 +16,29 @@ const RegisterInfoContext = createContext<UseRegisterInfoType | null>(null);
 export const RegisterInfoProvider = ({ children }: { children: ReactNode }) => {
   return (
     <RegisterInfoContext.Provider
-      value={useRegisterInfo({} as studentInfoType)}
+      value={useRegisterInfo({
+        std_fName: '',
+        std_lName: '',
+        std_middleInitial: '',
+        std_ssn: '',
+        std_email: '',
+        std_address: '',
+        std_city: '',
+        std_state: '',
+        std_zip: '',
+        std_birthDate: '',
+        std_phoneNum: '',
+        work_name: '',
+        work_address: '',
+        work_city: '',
+        work_state: '',
+        work_zip: '',
+        work_phoneNum: '',
+        ceu_license_number: '',
+        ceu_license_exp_date: '',
+        chha_license_number: '',
+        chha_license_exp_date: '',
+      })}
     >
       {children}
     </RegisterInfoContext.Provider>

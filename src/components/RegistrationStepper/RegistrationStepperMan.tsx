@@ -1,22 +1,29 @@
+// React
+import { useContext, useState } from 'react';
+
+// Material UI Components
 import Stepper from '@mui/material/Stepper';
 import StepLabel from '@mui/material/StepLabel';
 import Step from '@mui/material/Step';
-import { useContext, useState } from 'react';
-import { Button, getStepContentUtilityClass } from '@mui/material';
+import Button from '@mui/material/Button';
+
+// Context
 import RegisterInfoContext from '../../context/registerInfo';
+
+// Components
 import PersonalInfoForm from './PersonalInfoForm';
 import WorkInfoForm from './WorkInfoForm';
 import CertificateInfoForm from './CertificateInfoForm';
 import ReviewInfo from './ReviewInfo/ReviewInfo';
-import useFormValues from '../../hooks/useFormValues';
-import type { studentInfoType } from '../../types/studentInfo';
+
+import type { UseRegisterInfoType } from '../../types/useRegisterInfo';
 
 function RegistrationStepperMan() {
   const [activeStep, setActiveStep] = useState(0);
 
-  const [values, setValues] = useContext(RegisterInfoContext);
-
-  const [formValues, handleChange] = useFormValues({} as studentInfoType);
+  const [values, setValues] = useContext(
+    RegisterInfoContext
+  ) as UseRegisterInfoType;
 
   const steps = [
     'Personal Info',
@@ -38,12 +45,7 @@ function RegistrationStepperMan() {
   const getStepContent = (step: number) => {
     switch (step) {
       case 0:
-        return (
-          <PersonalInfoForm
-            formValues={formValues}
-            handleChange={handleChange}
-          />
-        );
+        return <PersonalInfoForm formValues={values} setValues={setValues} />;
       case 1:
         return <WorkInfoForm />;
       case 2:
@@ -60,13 +62,18 @@ function RegistrationStepperMan() {
       <h1>Stepper Manual</h1>
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((step) => (
-          <Step>
+          <Step key={step}>
             <StepLabel>{step}</StepLabel>
           </Step>
         ))}
       </Stepper>
       {activeStep === steps.length ? (
-        <h1>Account Creation Complete</h1>
+        <div>
+          <h1>Account Creation Complete</h1>
+          <Button onClick={() => console.log({ values })}>
+            Log the Results
+          </Button>
+        </div>
       ) : (
         <div>{getStepContent(activeStep)}</div>
       )}
