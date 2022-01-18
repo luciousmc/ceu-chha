@@ -1,9 +1,10 @@
 // React
-import { createContext, ReactNode } from 'react';
+import { createContext } from 'react';
 
 // Types
-import { UseRegisterInfoType } from '../types/useRegisterInfo';
-import { studentInfoType } from '../types/studentInfo';
+import type { ReactNode } from 'react';
+import type { UseRegisterInfoType } from '../types/useRegisterInfo';
+import type { studentInfoType } from '../types/studentInfo';
 
 // Hooks
 import useRegisterInfo from '../hooks/useRegisterInfo';

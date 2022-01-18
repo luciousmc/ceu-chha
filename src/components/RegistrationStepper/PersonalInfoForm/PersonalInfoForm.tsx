@@ -7,7 +7,10 @@ import Typography from '@mui/material/Typography';
 import useFormValues from '../../../hooks/useFormValues';
 
 // Types
-import { personalInfoType } from '../../../types/studentInfo';
+import type {
+  personalInfoType,
+  studentInfoType,
+} from '../../../types/studentInfo';
 
 // Styled Components
 import { PersonalInfoFormContainer } from './PersonalInfoForm.style';
@@ -26,9 +29,14 @@ const INITIAL_STATE = {
   phoneNumber: '',
 };
 
-function PersonalInfoForm() {
-  const [personalInfo, handleChange] =
-    useFormValues<personalInfoType>(INITIAL_STATE);
+interface Props {
+  formValues: studentInfoType;
+  handleChange: React.ChangeEventHandler<HTMLInputElement>;
+}
+
+function PersonalInfoForm({ formValues, handleChange }: Props) {
+  // const [personalInfo, handleChange] =
+  //   useFormValues<personalInfoType>(INITIAL_STATE);
 
   return (
     <PersonalInfoFormContainer>
@@ -53,7 +61,7 @@ function PersonalInfoForm() {
               label='First Name'
               id='firstName'
               onChange={handleChange}
-              value={personalInfo.firstName}
+              value={formValues.firstName}
               fullWidth
             />
           </Grid>
@@ -63,7 +71,7 @@ function PersonalInfoForm() {
               label='M.I.'
               id='middleInitial'
               onChange={handleChange}
-              value={personalInfo.middleInitial}
+              value={formValues.middleInitial}
             />
           </Grid>
           <Grid item xs={12} sm={5}>
@@ -73,7 +81,7 @@ function PersonalInfoForm() {
               label='Last Name'
               id='lastName'
               onChange={handleChange}
-              value={personalInfo.lastName}
+              value={formValues.lastName}
               fullWidth
             />
           </Grid>
@@ -87,7 +95,7 @@ function PersonalInfoForm() {
               label='Birth Date'
               id='birthDate'
               onChange={handleChange}
-              value={personalInfo.birthDate}
+              value={formValues.birthDate}
               fullWidth
             />
           </Grid>
@@ -98,7 +106,7 @@ function PersonalInfoForm() {
               label='Social Security #'
               id='ssn'
               onChange={handleChange}
-              value={personalInfo.ssn}
+              value={formValues.ssn}
               fullWidth
             />
           </Grid>
@@ -110,7 +118,7 @@ function PersonalInfoForm() {
               label='Address'
               id='address'
               onChange={handleChange}
-              value={personalInfo.address}
+              value={formValues.address}
               fullWidth
             />
           </Grid>
@@ -122,7 +130,7 @@ function PersonalInfoForm() {
               label='City'
               id='city'
               onChange={handleChange}
-              value={personalInfo.city}
+              value={formValues.city}
               fullWidth
             />
           </Grid>
@@ -133,7 +141,7 @@ function PersonalInfoForm() {
               label='State'
               id='state'
               onChange={handleChange}
-              value={personalInfo.state}
+              value={formValues.state}
               fullWidth
             />
           </Grid>
@@ -144,7 +152,7 @@ function PersonalInfoForm() {
               label='Zip Code'
               id='zipCode'
               onChange={handleChange}
-              value={personalInfo.zipCode}
+              value={formValues.zipCode}
               fullWidth
             />
           </Grid>
@@ -155,7 +163,7 @@ function PersonalInfoForm() {
               label='Email'
               id='email'
               onChange={handleChange}
-              value={personalInfo.email}
+              value={formValues.email}
               fullWidth
             />
           </Grid>
@@ -166,7 +174,7 @@ function PersonalInfoForm() {
               label='Tel #'
               id='phone'
               onChange={handleChange}
-              value={personalInfo.phoneNumber}
+              value={formValues.phoneNumber}
               fullWidth
             />
           </Grid>

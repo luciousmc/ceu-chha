@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": ["ES6", "DOM", "DOM.Iterable", "ESNext"],
+    "lib": ["ES6", "DOM", "DOM.Iterable", "ESNext", "ES2015.Iterable"],
     "allowJs": false,
     "skipLibCheck": false,
     "esModuleInterop": false,
