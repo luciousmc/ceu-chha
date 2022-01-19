@@ -10,20 +10,6 @@ import type { ChangeEvent, Dispatch, SetStateAction } from 'react';
 // Styled Components
 import { PersonalInfoFormContainer } from './PersonalInfoForm.style';
 
-const INITIAL_STATE = {
-  firstName: '',
-  lastName: '',
-  middleInitial: '',
-  ssn: '',
-  email: '',
-  address: '',
-  city: '',
-  state: '',
-  zipCode: '',
-  birthDate: '',
-  phoneNumber: '',
-};
-
 interface Props {
   formValues: studentInfoType;
   setValues: Dispatch<SetStateAction<studentInfoType>>;
@@ -31,7 +17,6 @@ interface Props {
 
 function PersonalInfoForm({ formValues, setValues }: Props) {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.name);
     setValues((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
