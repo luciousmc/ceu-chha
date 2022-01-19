@@ -1,14 +1,16 @@
 // Material UI Components
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
 
 // Types
 import type { studentInfoType } from '../../../types/studentInfo';
 import type { ChangeEvent, Dispatch, SetStateAction } from 'react';
 
-// Styled Components
+// Styles
 import { PersonalInfoFormContainer } from './PersonalInfoForm.style';
+
+// Compnents
+import FormHeader from '../FormHeader';
 
 interface Props {
   formValues: studentInfoType;
@@ -27,17 +29,7 @@ function PersonalInfoForm({ formValues, setValues }: Props) {
     <PersonalInfoFormContainer>
       <form>
         <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <Typography variant='h5' align='center'>
-              Your Personal Details
-            </Typography>
-            <Typography variant='subtitle1' align='center' gutterBottom>
-              Please fill in your information then click &quot;Next&quot; to
-              move on.
-              <br />
-              <strong>Note:</strong> * is required.
-            </Typography>
-          </Grid>
+          <FormHeader title='Your Personal Info' />
 
           <Grid item xs={12} sm={5}>
             <TextField

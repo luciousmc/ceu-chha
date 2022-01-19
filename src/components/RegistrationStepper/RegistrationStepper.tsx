@@ -51,9 +51,11 @@ function RegistrationStepper() {
       case 0:
         return <PersonalInfoForm formValues={values} setValues={setValues} />;
       case 1:
-        return <WorkInfoForm />;
+        return <WorkInfoForm formValues={values} setValues={setValues} />;
       case 2:
-        return <CertificateInfoForm />;
+        return (
+          <CertificateInfoForm formValues={values} setValues={setValues} />
+        );
       case 3:
         return <ReviewInfo />;
       default:
@@ -78,9 +80,10 @@ function RegistrationStepper() {
           </Button>
         </div>
       ) : (
-        <StepContent>{getStepContent(activeStep)}</StepContent>
+        getStepContent(activeStep)
       )}
 
+      <Button onClick={handlePrevious}>Previous</Button>
       <Button onClick={handleNext}>Next</Button>
     </StepContainer>
   );
