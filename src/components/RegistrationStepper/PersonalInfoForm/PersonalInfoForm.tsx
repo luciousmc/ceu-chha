@@ -27,10 +27,10 @@ function PersonalInfoForm({ formValues, setValues }: Props) {
 
   return (
     <PersonalInfoFormContainer>
+      <FormHeader title='Your Personal Info' />
+
       <form>
         <Grid container spacing={3}>
-          <FormHeader title='Your Personal Info' />
-
           <Grid item xs={12} sm={5}>
             <TextField
               required
