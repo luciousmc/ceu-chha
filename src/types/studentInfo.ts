@@ -17,7 +17,7 @@ export type workInfoType = {
   work_address?: string;
   work_city?: string;
   work_state?: string;
-  work_zip?: '';
+  work_zip?: string;
   work_phoneNum?: string;
 };
 
