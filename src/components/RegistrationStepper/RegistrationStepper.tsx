@@ -17,10 +17,10 @@ import CertificateInfoForm from './CertificateInfoForm';
 import ReviewInfo from './ReviewInfo/ReviewInfo';
 
 // Styled Components
-import { StepContainer, StepContent } from './RegistrationStepper.style';
+import { StepContainer } from './RegistrationStepper.style';
 
 // Types
-import type { UseRegisterInfoType } from '../../types/useRegisterInfo';
+import type { UseRegisterInfoType } from '../../types/registerInfo';
 
 function RegistrationStepper() {
   const [activeStep, setActiveStep] = useState(0);
