@@ -9,7 +9,7 @@ import type { ChangeEvent, Dispatch, SetStateAction } from 'react';
 // Styles
 import { PersonalInfoFormContainer } from './PersonalInfoForm.style';
 
-// Compnents
+// Components
 import FormHeader from '../FormHeader';
 
 interface Props {
