@@ -38,6 +38,7 @@ function PersonalInfoForm() {
         <Grid container spacing={3}>
           <Grid item xs={12} sm={5}>
             <TextField
+              size='small'
               required
               name='std_fName'
               label='First Name'
@@ -49,6 +50,7 @@ function PersonalInfoForm() {
           </Grid>
           <Grid item xs={12} sm={2}>
             <TextField
+              size='small'
               name='std_middleInitial'
               label='M.I.'
               id='middleInitial'
@@ -58,6 +60,7 @@ function PersonalInfoForm() {
           </Grid>
           <Grid item xs={12} sm={5}>
             <TextField
+              size='small'
               required
               name='std_lName'
               label='Last Name'
@@ -70,6 +73,7 @@ function PersonalInfoForm() {
 
           <Grid item xs={6}>
             <TextField
+              size='small'
               required
               name='std_birthDate'
               type='date'
@@ -83,6 +87,7 @@ function PersonalInfoForm() {
           </Grid>
           <Grid item xs={6}>
             <TextField
+              size='small'
               required
               name='std_ssn'
               label='Social Security #'
@@ -95,6 +100,7 @@ function PersonalInfoForm() {
 
           <Grid item xs={12}>
             <TextField
+              size='small'
               required
               name='std_address'
               label='Address'
@@ -107,6 +113,7 @@ function PersonalInfoForm() {
 
           <Grid item xs={12} sm={4}>
             <TextField
+              size='small'
               required
               name='std_city'
               label='City'
@@ -118,6 +125,7 @@ function PersonalInfoForm() {
           </Grid>
           <Grid item xs={6} sm={4}>
             <TextField
+              size='small'
               required
               name='std_state'
               label='State'
@@ -129,6 +137,7 @@ function PersonalInfoForm() {
           </Grid>
           <Grid item xs={6} sm={4}>
             <TextField
+              size='small'
               required
               name='std_zip'
               label='Zip Code'
@@ -141,6 +150,7 @@ function PersonalInfoForm() {
 
           <Grid item xs={6}>
             <TextField
+              size='small'
               name='std_email'
               label='Email'
               id='email'
@@ -151,6 +161,7 @@ function PersonalInfoForm() {
           </Grid>
           <Grid item xs={6}>
             <TextField
+              size='small'
               required
               name='std_phoneNum'
               label='Tel #'

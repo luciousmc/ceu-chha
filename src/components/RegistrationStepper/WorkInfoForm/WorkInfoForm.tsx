@@ -38,6 +38,7 @@ function WorkInfoForm() {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <TextField
+              size='small'
               label='Employer Name'
               name='work_name'
               value={formValues.work_name}
@@ -48,6 +49,7 @@ function WorkInfoForm() {
 
           <Grid item xs={12}>
             <TextField
+              size='small'
               label='Employer Address'
               name='work_address'
               value={formValues.work_address}
@@ -58,6 +60,7 @@ function WorkInfoForm() {
 
           <Grid item xs={4}>
             <TextField
+              size='small'
               label='City'
               name='work_city'
               value={formValues.work_city}
@@ -67,6 +70,7 @@ function WorkInfoForm() {
           </Grid>
           <Grid item xs={4}>
             <TextField
+              size='small'
               label='State'
               name='work_state'
               value={formValues.work_state}
@@ -76,6 +80,7 @@ function WorkInfoForm() {
           </Grid>
           <Grid item xs={4}>
             <TextField
+              size='small'
               label='Zip'
               name='work_zip'
               value={formValues.work_zip}
@@ -86,6 +91,7 @@ function WorkInfoForm() {
 
           <Grid item>
             <TextField
+              size='small'
               label='Phone #'
               name='work_phoneNum'
               value={formValues.work_phoneNum}
