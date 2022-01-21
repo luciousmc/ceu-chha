@@ -22,19 +22,16 @@ export type workInfoType = {
 };
 
 type ceuLicense = {
-  ceu_license_number: number | null | string;
-  ceu_license_exp_date: Date | null | string;
+  ceu_license_number?: number | null | string;
+  ceu_license_exp_date?: Date | null | string;
 };
 
 type chhaLicense = {
-  chha_license_number: number | null | string;
-  chha_license_exp_date: Date | null | string;
+  chha_license_number?: number | null | string;
+  chha_license_exp_date?: Date | null | string;
 };
 
-export type certificateInfoType =
-  | ceuLicense
-  | chhaLicense
-  | (ceuLicense & chhaLicense);
+export type certificateInfoType = ceuLicense & chhaLicense;
 
 export type studentInfoType = personalInfoType &
   workInfoType &
