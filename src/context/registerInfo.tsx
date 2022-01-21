@@ -3,7 +3,7 @@ import { createContext } from 'react';
 
 // Types
 import type { ReactNode } from 'react';
-import type { UseRegisterInfoType } from '../types/useRegisterInfo';
+import type { UseRegisterInfoType } from '../types/registerInfo';
 import type { studentInfoType } from '../types/studentInfo';
 
 // Hooks
