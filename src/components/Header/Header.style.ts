@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import AppBar from '@mui/material/AppBar';
 
 export const HeaderContainer = styled.header`
-  height: 20vh;
+  height: 15vh;
 `;
 
 export const StyledAppBar = styled(AppBar)`
-  padding: 20px;
+  padding: 10px;
   position: sticky;
 `;
 
