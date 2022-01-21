@@ -125,7 +125,7 @@ function Home() {
       <RegisterText>
         Don't have an account?
         <RegisterLink onClick={() => navigate('/register')} color='error'>
-          Register
+          Sign up
         </RegisterLink>
       </RegisterText>
     </HomeContainer>
