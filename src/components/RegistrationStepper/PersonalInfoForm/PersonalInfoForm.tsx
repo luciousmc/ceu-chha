@@ -1,10 +1,16 @@
+// React
+import { useContext } from 'react';
+
 // Material UI Components
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 
 // Types
-import type { studentInfoType } from '../../../types/studentInfo';
-import type { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import type { ChangeEvent } from 'react';
+import type { UseRegisterInfoType } from '../../../types/registerInfo';
+
+// Context
+import RegisterInfoContext from '../../../context/registerInfo';
 
 // Styles
 import { PersonalInfoFormContainer } from './PersonalInfoForm.style';
@@ -12,14 +18,13 @@ import { PersonalInfoFormContainer } from './PersonalInfoForm.style';
 // Components
 import FormHeader from '../FormHeader';
 
-interface Props {
-  formValues: studentInfoType;
-  setValues: Dispatch<SetStateAction<studentInfoType>>;
-}
+function PersonalInfoForm() {
+  const [formValues, setFormValues] = useContext(
+    RegisterInfoContext
+  ) as UseRegisterInfoType;
 
-function PersonalInfoForm({ formValues, setValues }: Props) {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValues((prevState) => ({
+    setFormValues((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));

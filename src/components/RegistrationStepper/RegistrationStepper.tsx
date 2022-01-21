@@ -49,13 +49,11 @@ function RegistrationStepper() {
   const getStepContent = (step: number) => {
     switch (step) {
       case 0:
-        return <PersonalInfoForm formValues={values} setValues={setValues} />;
+        return <PersonalInfoForm />;
       case 1:
-        return <WorkInfoForm formValues={values} setValues={setValues} />;
+        return <WorkInfoForm />;
       case 2:
-        return (
-          <CertificateInfoForm formValues={values} setValues={setValues} />
-        );
+        return <CertificateInfoForm />;
       case 3:
         return <ReviewInfo />;
       default:

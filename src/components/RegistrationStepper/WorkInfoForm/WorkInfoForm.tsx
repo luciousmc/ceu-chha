@@ -1,25 +1,30 @@
+// React
+import { useContext } from 'react';
+
 // Material UI Components
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 
 // Types
-import type { ChangeEvent, Dispatch, SetStateAction } from 'react';
-import type { studentInfoType } from '../../../types/studentInfo';
+import type { ChangeEvent } from 'react';
+import { UseRegisterInfoType } from '../../../types/registerInfo';
 
-// Components
-import FormHeader from '../FormHeader';
+// Context
+import RegisterInfoContext from '../../../context/registerInfo';
 
 // Styles
 import { WorkInfoFormContainer } from './WorkInfoForm.style';
 
-interface WorkInfoFormProps {
-  formValues: studentInfoType;
-  setValues: Dispatch<SetStateAction<studentInfoType>>;
-}
+// Components
+import FormHeader from '../FormHeader';
 
-function WorkInfoForm({ formValues, setValues }: WorkInfoFormProps) {
+function WorkInfoForm() {
+  const [formValues, setFormValues] = useContext(
+    RegisterInfoContext
+  ) as UseRegisterInfoType;
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValues((prevState) => ({
+    setFormValues((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
