@@ -63,7 +63,7 @@ function WorkInfoForm({ formValues, setValues }: WorkInfoFormProps) {
           <Grid item xs={4}>
             <TextField
               label='State'
-              name='work_city'
+              name='work_state'
               value={formValues.work_state}
               onChange={handleChange}
               fullWidth
@@ -72,7 +72,7 @@ function WorkInfoForm({ formValues, setValues }: WorkInfoFormProps) {
           <Grid item xs={4}>
             <TextField
               label='Zip'
-              name='work_city'
+              name='work_zip'
               value={formValues.work_zip}
               onChange={handleChange}
               fullWidth
@@ -80,7 +80,13 @@ function WorkInfoForm({ formValues, setValues }: WorkInfoFormProps) {
           </Grid>
 
           <Grid item>
-            <TextField label='Phone #' name='work_phoneNum' fullWidth />
+            <TextField
+              label='Phone #'
+              name='work_phoneNum'
+              value={formValues.work_phoneNum}
+              onChange={handleChange}
+              fullWidth
+            />
           </Grid>
         </Grid>
       </form>
