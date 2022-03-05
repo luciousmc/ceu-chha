@@ -9,7 +9,6 @@ export const DashboardHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 10px 15px;
-  border: 1px solid red;
 
   > p {
     color: #777;
