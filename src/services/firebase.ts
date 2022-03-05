@@ -2,6 +2,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   User,
+  signOut,
 } from 'firebase/auth';
 import { auth } from '../lib/firebase';
 
@@ -49,4 +50,11 @@ export async function signInUser(username: string, password: string) {
       return errorMsg;
     }
   }
+}
+
+/**
+ * Log the user out of the app
+ */
+export function logoutUser(): void {
+  signOut(auth);
 }

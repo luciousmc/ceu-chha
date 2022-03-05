@@ -1,8 +1,7 @@
 // Styled Components
 import { Avatar } from '@mui/material';
-import { signOut } from 'firebase/auth';
 import DashboardBanner from '../../components/DashboardBanner';
-import { auth } from '../../lib/firebase';
+import { logoutUser } from '../../services/firebase';
 import { DashboardContainer, DashboardHeader } from './Dashboard.style';
 
 function Dashboard() {
@@ -10,7 +9,7 @@ function Dashboard() {
     <DashboardContainer>
       <DashboardHeader>
         <p>Help</p>
-        <div>
+        <div style={{ cursor: 'pointer' }} onClick={() => logoutUser()}>
           <div>
             <Avatar />
           </div>
