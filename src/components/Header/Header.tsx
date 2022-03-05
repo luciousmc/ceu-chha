@@ -11,10 +11,15 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 
 // React Router
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
 
 function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  if (location.pathname === ROUTES.DASHBOARD) return null;
+
   return (
     <HeaderContainer>
       <Box>

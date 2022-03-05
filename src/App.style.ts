@@ -16,5 +16,4 @@ export const MainContainer = styled.main`
   display: flex;
   justify-content: center;
   min-height: 80vh;
-  padding: 30px;
 `;
