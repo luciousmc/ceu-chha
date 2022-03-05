@@ -11,8 +11,12 @@ export const DashboardHeader = styled.header`
   padding: 10px 15px;
 
   > p {
-    color: #777;
+    color: var(--clr-darker);
     font-size: 0.75rem;
+  }
+
+  > div > p {
+    color: #555;
   }
 
   > div {

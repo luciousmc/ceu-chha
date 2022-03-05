@@ -6,7 +6,8 @@ export const DashboardBannerContainer = styled.div`
     hsl(259 89% 39%),
     hsla(292 33% 50% / 0.86)
   );
-  color: white;
+  color: var(--clr-white);
+  box-shadow: 0 2px 10px var(--clr-default);
 
   h2 {
     font-weight: normal;
@@ -34,7 +35,7 @@ export const ImgPlaceholder = styled.div`
   width: 125px;
   height: 125px;
   border: 2px solid white;
-  background-color: #777;
+  background-color: var(--clr-default);
 `;
 
 export const StudentInfo = styled.div`

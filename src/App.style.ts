@@ -1,6 +1,11 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
+  :root {
+    --clr-white: whitesmoke;
+    --clr-default: #777;
+    --clr-darker: #555;
+  }
   * {
     margin: 0;
     padding: 0;
