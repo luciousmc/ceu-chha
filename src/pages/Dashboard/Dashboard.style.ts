@@ -17,11 +17,12 @@ export const DashboardHeader = styled.header`
 
   > div > p {
     color: #555;
+    font-size: var(--text-sm);
   }
 
   > div {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 0.6rem;
   }
 `;

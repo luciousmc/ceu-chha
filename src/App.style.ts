@@ -5,6 +5,8 @@ export const GlobalStyles = createGlobalStyle`
     --clr-white: whitesmoke;
     --clr-default: #777;
     --clr-darker: #555;
+
+    --text-sm: .8rem;
   }
   * {
     margin: 0;

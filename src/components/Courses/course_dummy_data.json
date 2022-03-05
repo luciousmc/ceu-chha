@@ -1,0 +1,40 @@
+{
+  "first_name": "Marlon",
+  "last_name": "Clay",
+  "ceu_license_num": 5684256,
+  "ceu_exp_date": "12/22/2025",
+  "chha_license_num": 251625,
+  "chha_exp_date": "11/09/2023",
+  "registered_classes": 3,
+  "classes_total": 23,
+  "classes": [
+    {
+      "topic": "Dealing with Those who have a Terminal Illness",
+      "date": "12/23/21",
+      "ampm": "PM",
+      "platform": "Zoom",
+      "status": "Paid"
+    },
+    {
+      "topic": "Cystic Fibrosis",
+      "date": "2/23/22",
+      "ampm": "AM",
+      "platform": "On-site",
+      "status": "Unpaid"
+    },
+    {
+      "topic": "Anal Cancer",
+      "date": "3/23/22",
+      "ampm": "AM",
+      "platform": "On-site",
+      "status": "Paid"
+    },
+    {
+      "topic": "Psoriasis",
+      "date": "3/23/22",
+      "ampm": "PM",
+      "platform": "On-site",
+      "status": "Paid"
+    }
+  ]
+}
