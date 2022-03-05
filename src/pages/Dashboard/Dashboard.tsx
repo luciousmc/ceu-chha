@@ -19,8 +19,6 @@ function Dashboard() {
       </DashboardHeader>
 
       <DashboardBanner />
-
-      <button onClick={() => signOut(auth)}>Logout</button>
     </DashboardContainer>
   );
 }
