@@ -9,7 +9,6 @@ export const CoursesContainer = styled.section`
 export const Wrapper = styled.div`
   max-width: 1024px;
   width: 90%;
-  border: 1px solid red;
   margin: auto;
 
   header {
@@ -17,6 +16,11 @@ export const Wrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+
+    > h3 {
+      font-weight: normal;
+      font-size: 1.4rem;
+    }
   }
 
   table {

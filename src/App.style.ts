@@ -5,6 +5,7 @@ export const GlobalStyles = createGlobalStyle`
     --clr-white: whitesmoke;
     --clr-default: #777;
     --clr-darker: #555;
+    --clr-blue: rgb(25, 118, 210);
 
     --text-sm: .8rem;
   }

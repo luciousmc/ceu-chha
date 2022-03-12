@@ -1,4 +1,6 @@
 import { CoursesContainer, Wrapper } from './Courses.style';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
 
 function Courses() {
   return (
@@ -6,7 +8,9 @@ function Courses() {
       <Wrapper>
         <header>
           <h3>My Classes</h3>
-          <button>Add Class +</button>
+          <Fab variant='extended' color='primary' size='medium'>
+            Add Class &ensp; <AddIcon />
+          </Fab>
         </header>
         <table>
           <thead>
