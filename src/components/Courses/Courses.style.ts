@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import TableRow from '@mui/material/TableRow';
+import { tableCellClasses } from '@mui/material';
 
 export const CoursesContainer = styled.section`
   display: grid;
@@ -27,3 +29,9 @@ export const Wrapper = styled.div`
     width: 100%;
   }
 `;
+
+export const CourseRow = styled(TableRow)`
+  margin-bottom: 5px !important;
+`;
+
+/* [`&.${tableCellClasses.head}`] */

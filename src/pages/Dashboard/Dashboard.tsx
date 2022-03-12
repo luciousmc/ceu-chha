@@ -1,11 +1,20 @@
+import { useState } from 'react';
+
 // Styled Components
-import { Avatar } from '@mui/material';
+import { DashboardContainer, DashboardHeader } from './Dashboard.style';
+
+// Components
 import DashboardBanner from '../../components/DashboardBanner';
 import Courses from '../../components/Courses';
+
+// Service Functions
 import { logoutUser } from '../../services/firebase';
-import { DashboardContainer, DashboardHeader } from './Dashboard.style';
+
+// Data
 import dummyData from './../../components/Courses/course_dummy_data.json';
-import { useState } from 'react';
+
+// Material UI
+import { Avatar } from '@mui/material';
 
 function Dashboard() {
   const [data] = useState(dummyData);

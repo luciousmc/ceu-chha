@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 // Styled Components
-import { CoursesContainer, Wrapper } from './Courses.style';
+import { CourseRow, CoursesContainer, Wrapper } from './Courses.style';
 
 // Material UI Components
 import Fab from '@mui/material/Fab';
@@ -18,9 +18,7 @@ import Paper from '@mui/material/Paper';
 import type { CourseInfo } from '../../types/class';
 
 function Courses({ classes }: { classes: CourseInfo[] }) {
-  const [data, setData] = useState(classes);
-
-  // TODO: useEffect hook to call fetch data to replace dummy data
+  const [data, setData] = useState<CourseInfo[]>(classes);
 
   return (
     <CoursesContainer>
@@ -48,13 +46,13 @@ function Courses({ classes }: { classes: CourseInfo[] }) {
             <TableBody>
               {data &&
                 data.map((course, i) => (
-                  <TableRow>
+                  <CourseRow key={i}>
                     <TableCell>{course.topic}</TableCell>
                     <TableCell>{course.date}</TableCell>
                     <TableCell>{course.am_pm}</TableCell>
                     <TableCell>{course.platform}</TableCell>
                     <TableCell>{course.status}</TableCell>
-                  </TableRow>
+                  </CourseRow>
                 ))}
             </TableBody>
           </Table>
