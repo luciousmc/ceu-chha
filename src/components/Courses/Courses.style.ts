@@ -26,13 +26,4 @@ export const Wrapper = styled.div`
   table {
     width: 100%;
   }
-
-  thead th {
-    /* text-align: left; */
-    padding: 5px;
-  }
-
-  tbody td:not(td:first-child) {
-    text-align: center;
-  }
 `;

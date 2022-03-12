@@ -4,8 +4,12 @@ import DashboardBanner from '../../components/DashboardBanner';
 import Courses from '../../components/Courses';
 import { logoutUser } from '../../services/firebase';
 import { DashboardContainer, DashboardHeader } from './Dashboard.style';
+import dummyData from './../../components/Courses/course_dummy_data.json';
+import { useState } from 'react';
 
 function Dashboard() {
+  const [data] = useState(dummyData);
+
   return (
     <DashboardContainer>
       <DashboardHeader>
@@ -20,7 +24,7 @@ function Dashboard() {
 
       <DashboardBanner />
 
-      <Courses />
+      <Courses classes={data.classes} />
     </DashboardContainer>
   );
 }

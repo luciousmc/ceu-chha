@@ -1,8 +1,27 @@
+import { useState } from 'react';
+
+// Styled Components
 import { CoursesContainer, Wrapper } from './Courses.style';
+
+// Material UI Components
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
+import Table from '@mui/material/Table';
+import TableHead from '@mui/material/TableHead';
+import TableBody from '@mui/material/TableBody';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import Paper from '@mui/material/Paper';
 
-function Courses() {
+// Types
+import type { CourseInfo } from '../../types/class';
+
+function Courses({ classes }: { classes: CourseInfo[] }) {
+  const [data, setData] = useState(classes);
+
+  // TODO: useEffect hook to call fetch data to replace dummy data
+
   return (
     <CoursesContainer>
       <Wrapper>
@@ -12,26 +31,34 @@ function Courses() {
             Add Class &ensp; <AddIcon />
           </Fab>
         </header>
-        <table>
-          <thead>
-            <tr>
-              <th>Class Topic</th>
-              <th>Date</th>
-              <th>AM/PM</th>
-              <th>Platform</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Dealing with Those who have a terminal Illness</td>
-              <td>12/30/2021</td>
-              <td>PM</td>
-              <td>Zoom</td>
-              <td>Paid</td>
-            </tr>
-          </tbody>
-        </table>
+        <TableContainer
+          component={Paper}
+          sx={{ backgroundColor: 'transparent' }}
+        >
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Class Topic</TableCell>
+                <TableCell>Date</TableCell>
+                <TableCell>AM/PM</TableCell>
+                <TableCell>Platform</TableCell>
+                <TableCell>Status</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {data &&
+                data.map((course, i) => (
+                  <TableRow>
+                    <TableCell>{course.topic}</TableCell>
+                    <TableCell>{course.date}</TableCell>
+                    <TableCell>{course.am_pm}</TableCell>
+                    <TableCell>{course.platform}</TableCell>
+                    <TableCell>{course.status}</TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </Wrapper>
     </CoursesContainer>
   );

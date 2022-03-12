@@ -11,28 +11,28 @@
     {
       "topic": "Dealing with Those who have a Terminal Illness",
       "date": "12/23/21",
-      "ampm": "PM",
+      "am_pm": "PM",
       "platform": "Zoom",
       "status": "Paid"
     },
     {
       "topic": "Cystic Fibrosis",
       "date": "2/23/22",
-      "ampm": "AM",
+      "am_pm": "AM",
       "platform": "On-site",
       "status": "Unpaid"
     },
     {
       "topic": "Lung Cancer",
       "date": "3/23/22",
-      "ampm": "AM",
+      "am_pm": "AM",
       "platform": "On-site",
       "status": "Paid"
     },
     {
       "topic": "Psoriasis",
       "date": "3/23/22",
-      "ampm": "PM",
+      "am_pm": "PM",
       "platform": "On-site",
       "status": "Paid"
     }
