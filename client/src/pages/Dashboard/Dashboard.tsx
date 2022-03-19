@@ -11,7 +11,7 @@ import Courses from '../../components/Courses';
 import { logoutUser } from '../../services/firebase';
 
 // Data
-import dummyData from './../../components/Courses/course_dummy_data.json';
+import dummyData from '../../components/Courses/course_dummy_data.json';
 
 // Material UI
 import { Avatar } from '@mui/material';
