@@ -6,7 +6,10 @@ const errorHandler = require('./middleware/errorMiddleware');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.get('/api/classes', require('./routes/classRoutes'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+app.use('/api/classes', require('./routes/classRoutes'));
 
 app.use(errorHandler);
 
