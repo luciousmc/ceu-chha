@@ -1,7 +1,8 @@
 const express = require('express');
-const { getClasses } = require('../controllers/classController');
+const { getClasses, createClass } = require('../controllers/classController');
 const router = express.Router();
 
-router.get('/api/classes', getClasses);
+router.get('/', getClasses);
+router.post('/create', createClass);
 
 module.exports = router;
