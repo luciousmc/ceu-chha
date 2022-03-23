@@ -13,3 +13,5 @@ class classModel {
     return res.rows;
   }
 }
+
+module.exports = classModel;
