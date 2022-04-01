@@ -1,4 +1,4 @@
-DROP TABLE classes, students, registered_classes;
+DROP TABLE IF EXISTS classes, students, registered_classes;
 
 CREATE TYPE class_platform AS ENUM ('Zoom', 'On-site');
 CREATE TYPE class_status AS ENUM ('Unpaid', 'Paid');
