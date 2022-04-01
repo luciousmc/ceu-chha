@@ -29,7 +29,7 @@ class Student {
    * @param student.cna_exp_date Expiration date of student's CNA license
    * @param student.chha_number Student's CHHA license number
    * @param student.chha_exp_date Expiration date of student's CHHA license
-   * @returns
+   * @returns Object of added student
    */
   static async register(student) {
     const q = `
@@ -53,9 +53,9 @@ class Student {
       student.chha_exp_date,
     ];
 
-    const result = await db.query(q, values);
+    const registeredStudent = await db.query(q, values);
 
-    return new Student(result.rows[0]);
+    return new Student(registeredStudent.rows[0]);
   }
 }
 
