@@ -6,7 +6,7 @@ const getAllStudents = asyncHandler(async (req, res, next) => {
   const students = await Student.getAllStudents();
 
   if (!students) {
-    next(new ClientError('There are no students in the database', 400));
+    next(new ClientError('There are no students in the database', 204));
   }
 
   res.status(200).json({
@@ -16,7 +16,10 @@ const getAllStudents = asyncHandler(async (req, res, next) => {
 });
 
 const registerStudent = asyncHandler(async (req, res, next) => {
-  const studentExists = await Student.checkStudentExists(req.body.email);
+  const studentExists = await Student.checkStudentExists(
+    req.body.ssn,
+    req.body.email
+  );
 
   if (studentExists) {
     next(new ClientError('Error: student already exists', 400));
