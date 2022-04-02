@@ -9,7 +9,10 @@ const errorHandler = (err, req, res, next) => {
       stack: process.env.NODE_ENV === 'production' ? undefined : err.stack,
     });
   } else {
-    next(err);
+    res.status(500).json({
+      message: 'An unexpected error occured',
+      stack: process.env.NODE_ENV === 'production' ? undefined : err.stack,
+    });
   }
 };
 
