@@ -15,6 +15,20 @@ class Student {
     this.chha_exp_date = student.chha_exp_date;
   }
 
+  static async getAllStudents() {
+    const q = `SELECT * FROM students;`;
+    const students = await db.query(q);
+
+    if (!students.rows.length) {
+      return -1;
+    }
+
+    const result = students.rows.map((student) => {
+      return new Student(student);
+    });
+    return result;
+  }
+
   /**
    * Register a student to the platform
    * @param {object} student
@@ -34,13 +48,12 @@ class Student {
   static async register(student) {
     const q = `
       INSERT INTO students
-        (id, first_name, middle_initial, last_name, ssn, email, phone_number, cna_number,
+        (student_id, first_name, middle_initial, last_name, ssn, email, phone_number, cna_number,
         cna_exp_date, chha_number, chha_exp_date)
       VALUES (default, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
       RETURNING *;
     `;
     const values = [
-      student.id,
       student.first_name,
       student.middle_initial,
       student.last_name,
@@ -51,11 +64,23 @@ class Student {
       student.cna_exp_date,
       student.chha_number,
       student.chha_exp_date,
+      b,
     ];
 
     const registeredStudent = await db.query(q, values);
-
     return new Student(registeredStudent.rows[0]);
+  }
+
+  static async checkStudentExists(email) {
+    const q = `
+      SELECT * FROM students
+      WHERE email = $1;
+    `;
+    const values = [email];
+    const result = await db.query(q, values);
+
+    if (result) return true;
+    return false;
   }
 }
 
