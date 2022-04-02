@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/classes', require('./routes/classRoutes'));
+app.use('/api/students', require('./routes/studentRoutes'));
 
 app.use(errorHandler);
 
