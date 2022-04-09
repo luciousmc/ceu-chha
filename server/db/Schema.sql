@@ -25,7 +25,7 @@ CREATE TABLE students (
   middle_initial    varchar(1),
   last_name         varchar(20)    not null,
   ssn               varchar(15)    unique not null,
-  email             varchar(30)    unique not null,
+  email             varchar(30)    unique,
   phone_number      varchar(15)    not null,
   street_address    varchar(60)    not null,
   city              varchar(30)    not null,
