@@ -1,0 +1,5 @@
+INSERT INTO students (student_id, first_name, middle_initial, last_name, ssn, email, street_address, city, state, zipcode, phone_number, work_name, work_address, work_city, work_state, work_zipcode, cna_number, cna_exp_date, chha_number, chha_exp_date) VALUES
+(default, 'Chris', 'Y', 'Bitun', '1111111111', 'chrisbitun@yahoo.com', '897 Candy Cane Lane', 'Irvine', 'CA', '92715', '5468792123', 'ILA, Inc.', '637 Dancer Drive', 'Lake Forest', 'CA', '92618', '32019837190', '3/20/2025', '8393939393', '5/16/2029'),
+(default, 'Bobby', null, 'Anderson', '2222222222', 'bobbybob@ctx.com', '123 fourty five Avenue', 'New York', 'NY', '89087', '1234567890', 'Kids Alive', '22891 Playa Blvd', 'Wipstand', 'VM', '38462', '8889992222', '3/03/2024', '1827364510', '1/12/2023'),
+(default, 'Mary', 'B', 'Cooper', '3333333333', 'marymary@coops.net', '1999 Ibaker', 'Sesame', 'CA', '99876', '6978970987', 'BakerMan', '1 Mauberry Lane', 'San Diego', 'CA', '91923', null, null, '3393303333', '8/09/2022'),
+(default, 'John', 'Y', 'Five', '5555555555', 'vatoloco@shortcircuit.com', '875 Broadway', 'Paramount', 'CA', '87629', '9098675309', null, null, null, null, null, null, null, null, null);
