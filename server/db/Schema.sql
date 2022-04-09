@@ -22,7 +22,7 @@ CREATE TABLE registered_classes (
 CREATE TABLE students (
   student_id        serial         primary key,
   first_name        varchar(20)    not null,
-  middle_initial    varchar(1)     not null,
+  middle_initial    varchar(1),
   last_name         varchar(20)    not null,
   ssn               varchar(15)    unique not null,
   email             varchar(30)    unique not null,

@@ -9,6 +9,11 @@ class Student {
     this.ssn = student.ssn;
     this.email = student.email;
     this.phone_number = student.phone_number;
+    this.work_name = student.work_name;
+    this.work_address = student.work_address;
+    this.work_city = student.work_city;
+    this.work_state = student.work_state;
+    this.work_zipcode = student.work_zipcode;
     this.cna_number = student.cna_number;
     this.cna_exp_date = student.cna_exp_date;
     this.chha_number = student.chha_number;
