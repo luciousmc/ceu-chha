@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon server/index.js"
+    "server": "nodemon server/index.js",
+    "db:reset": "psql ceu_registration -c '\\i server/db/Schema.sql'",
+    "db:seed": "psql ceu_registration -c '\\i server/db/seed.sql'"
   },
   "repository": {
     "type": "git",
