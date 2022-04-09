@@ -76,12 +76,12 @@ class Student {
     return new Student(registeredStudent.rows[0]);
   }
 
-  static async checkStudentExists(ssn, email) {
+  static async checkStudentExists(ssn) {
     const q = `
       SELECT * FROM students
-      WHERE ssn = $1 AND email = $2;
+      WHERE ssn = $1;
     `;
-    const values = [ssn, email];
+    const values = [ssn];
     const result = await db.query(q, values);
 
     if (result) return true;
