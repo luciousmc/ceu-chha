@@ -11,62 +11,47 @@ datasource db {
 }
 
 model Student {
-  id                Int                 @id @default(autoincrement())
-  first_name        String
-  last_name         String
-  middle_initial    String?
-  birth_date        DateTime
-  ssn               String              @unique
-  email             String?             @unique
-  phone_number      String
-  address           String
-  city              String
-  state             String
-  zipcode           String
-  work_name         String?
-  work_address      String?
-  work_city         String?
-  work_state        String?
-  work_zipcode      Int?
-  cna_number        String?             @unique
-  cna_exp_date      DateTime?
-  chha_number       String?             @unique
-  chha_exp_date     DateTime?
-  RegisteredClasses RegisteredClasses[]
+  id             Int       @id @default(autoincrement())
+  first_name     String
+  last_name      String
+  middle_initial String?
+  birth_date     DateTime
+  ssn            String    @unique
+  email          String?   @unique
+  phone_number   String
+  address        String
+  city           String
+  state          String
+  zipcode        String
+  work_name      String?
+  work_address   String?
+  work_city      String?
+  work_state     String?
+  work_zipcode   Int?
+  cna_number     String?   @unique
+  cna_exp_date   DateTime?
+  chha_number    String?   @unique
+  chha_exp_date  DateTime?
+  classes        Class[]
 }
 
 model Class {
-  id                Int                 @id @default(autoincrement())
-  topic             String
-  date              ClassDate?
-  RegisteredClasses RegisteredClasses[]
+  id       Int         @id @default(autoincrement())
+  topic    String
+  date     ClassDate[]
+  platform String
+  students Student[]
 }
 
 model ClassDate {
   id      Int      @id @default(autoincrement())
   date    DateTime
   am_pm   AMPM
-  class   Class    @relation(fields: [classId], references: [id])
-  classId Int      @unique
-}
-
-model RegisteredClasses {
-  id        Int      @id @default(autoincrement())
-  student   Student  @relation(fields: [studentId], references: [id])
-  studentId Int
-  class     Class    @relation(fields: [classId], references: [id])
-  classId   Int
-  platform  Platform
+  Class   Class?   @relation(fields: [classId], references: [id])
+  classId Int?
 }
 
 enum AMPM {
   AM
   PM
-}
-
-enum Platform {
-  Zoom
-  OnSite
-  Discord
-  TeamSpeak
 }
