@@ -1,45 +1,86 @@
 import { PrismaClient, Prisma } from '@prisma/client';
+import * as express from 'express';
 import asyncHandler from 'express-async-handler';
+import IController from '../interfaces/controller';
 import ClientError from '../util/ClientError';
 
-const prisma = new PrismaClient();
+class ClassController implements IController {
+  PATH = '/classes';
+  prisma = new PrismaClient();
+  router = express.Router();
 
-// @desc Create a Topic to add to the database
-// @route GET /api/classes
-// @access private(admin)
-const createClass = asyncHandler(async (req, res, next) => {
-  const { topic, date, am_pm, platform } = req.body;
-
-  if (!topic || !date || !am_pm || !platform) {
-    next(new ClientError('Please provide all data', 400));
+  constructor() {
+    this.loadRoutes();
+  }
+  loadRoutes() {
+    this.router.get(this.PATH, this.getClasses);
+    this.router.post(this.PATH, this.createClass);
+    this.router.delete(`${this.PATH}/:id`, this.deleteClass);
   }
 
-  const result = await prisma.class.create({
-    data: {
-      topic,
-      date: {
-        create: {
-          date,
-          am_pm,
+  // @desc Get all classes
+  // @route GET /api/classes
+  // @access private
+  getClasses = asyncHandler(async (req, res) => {
+    const result = await this.prisma.class.findMany();
+    res.status(200).json({ message: 'Success', data: result });
+  });
+
+  // @desc Create a Topic to add to the database
+  // @route GET /api/courses
+  // @access private(admin)
+  createClass = asyncHandler(async (req, res, next) => {
+    const { topic, date, am_pm, platform } = req.body;
+
+    if (!topic || !date || !am_pm || !platform) {
+      next(new ClientError('Please provide all data', 400));
+    }
+
+    const result = await this.prisma.class.create({
+      data: {
+        topic,
+        date: {
+          create: {
+            date,
+            am_pm,
+          },
         },
+        platform,
       },
-      platform,
-    },
+    });
+
+    res.status(201).json({
+      message: 'Class Created',
+      data: result,
+    });
   });
 
-  res.status(201).json({
-    message: 'Class Created',
-    data: result,
-  });
-});
+  // @desc Delete a course from the database
+  // @route DELETE /api/courses/:id
+  // @access private(admin)
+  deleteClass = asyncHandler(
+    async (
+      req: express.Request,
+      res: express.Response,
+      next: express.NextFunction
+    ) => {
+      const id = Number(req.params.id);
 
-// @desc Get all classes
-// @route GET /api/classes
-// @access private
-const getClasses = asyncHandler(async (req, res) => {
-  const result = await prisma.class.findMany();
+      if (isNaN(id)) {
+        next(new ClientError('Invalid id', 400));
+      }
 
-  res.status(200).json({ message: 'Success', data: result });
-});
+      const result = await this.prisma.class.delete({
+        where: {
+          id: id,
+        },
+      });
 
-export { getClasses, createClass };
+      console.log('result', result);
+
+      res.status(200).send(`id ${id} deleted from the database`);
+    }
+  );
+}
+
+export default ClassController;
