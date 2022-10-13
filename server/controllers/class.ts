@@ -4,6 +4,9 @@ import ClientError from '../util/ClientError';
 
 const prisma = new PrismaClient();
 
+// @desc Create a Topic to add to the database
+// @route GET /api/classes
+// @access private(admin)
 const createClass = asyncHandler(async (req, res, next) => {
   const { topic, date, am_pm, platform } = req.body;
 
@@ -30,6 +33,9 @@ const createClass = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @desc Get all classes
+// @route GET /api/classes
+// @access private
 const getClasses = asyncHandler(async (req, res) => {
   const result = await prisma.class.findMany();
 
