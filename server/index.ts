@@ -1,5 +1,5 @@
 import App from './app';
-import ClassController from './controllers/class copy';
+import ClassController from './controllers/class';
 
-const app = new App([new ClassController()], 5000);
+const app = new App([new ClassController()], 5001);
 app.listen();
