@@ -1,5 +1,5 @@
 import express, { Application } from 'express';
-import ClassController from './controllers/class copy';
+import ClassController from './controllers/class';
 import errorHandler from './middleware/errorMiddleware';
 
 class App {
