@@ -1,13 +1,20 @@
 import { PrismaClient, Prisma } from '@prisma/client';
-import * as express from 'express';
+import {
+  Router,
+  type Response,
+  type Request,
+  type NextFunction,
+} from 'express';
 import asyncHandler from 'express-async-handler';
 import IController from '../interfaces/controller';
 import ClientError from '../util/ClientError';
 
+// import type { Response, Request, NextFunction } from 'express';
+
 class ClassController implements IController {
   PATH = '/classes';
   prisma = new PrismaClient();
-  router = express.Router();
+  router = Router();
 
   constructor() {
     this.loadRoutes();
@@ -59,11 +66,7 @@ class ClassController implements IController {
   // @route DELETE /api/courses/:id
   // @access private(admin)
   deleteClass = asyncHandler(
-    async (
-      req: express.Request,
-      res: express.Response,
-      next: express.NextFunction
-    ) => {
+    async (req: Request, res: Response, next: NextFunction) => {
       const id = Number(req.params.id);
 
       if (isNaN(id)) {
