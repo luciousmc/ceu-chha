@@ -1,12 +1,12 @@
 import express, { Application } from 'express';
-import ClassController from './controllers/class';
 import errorHandler from './middleware/errorMiddleware';
+import IController from './interfaces/controller';
 
 class App {
   app: Application;
   port: number;
 
-  constructor(controllers: ClassController[], port: number) {
+  constructor(controllers: IController[], port: number) {
     this.app = express();
     this.port = port;
 
@@ -18,7 +18,7 @@ class App {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: false }));
   }
-  loadControllers(controllers: ClassController[]) {
+  loadControllers(controllers: IController[]) {
     controllers.forEach((controller) => {
       this.app.use('/api', controller.router);
     });
