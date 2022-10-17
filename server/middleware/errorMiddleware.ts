@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { type NextFunction, type Request, type Response } from 'express';
 import ClientError from '../util/ClientError';
 
 function errorHandler(
@@ -7,7 +7,7 @@ function errorHandler(
   res: Response,
   next: NextFunction
 ) {
-  const status = err.status ? err.status : 500;
+  const status = err.status || 500;
 
   res.status(status).json({
     message: err.message,
