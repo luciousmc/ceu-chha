@@ -1,4 +1,4 @@
-import express, { Application } from 'express';
+import express, { type Application } from 'express';
 import errorHandler from './middleware/errorMiddleware';
 import IController from './interfaces/controller';
 
