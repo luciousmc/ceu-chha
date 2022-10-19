@@ -2,7 +2,7 @@ import IController from '../interfaces/controller';
 import { Router } from 'express';
 import { PrismaClient } from '@prisma/client';
 import asyncHandler from 'express-async-handler';
-import ClientError from '../util/ClientError';
+import StudentAlreadyExistsError from '../util/StudentAlreadyExistsError';
 
 class StudentController implements IController {
   PATH = '/students';
@@ -18,7 +18,7 @@ class StudentController implements IController {
 
   // @desc Get all students from the database
   // @route GET /api/students
-  // @domain private
+  // @access private
   getAllStudents = asyncHandler(async (req, res, next) => {
     const students = await this.prisma.student.findMany();
 
@@ -27,6 +27,9 @@ class StudentController implements IController {
     });
   });
 
+  // @desc Register a new student
+  // @route POST /api/students
+  // @access public
   registerStudent = asyncHandler(async (req, res, next) => {
     const studentExists = await this.prisma.student.findFirst({
       where: {
@@ -39,7 +42,7 @@ class StudentController implements IController {
         data: req.body,
       });
     } else {
-      next(new ClientError('Error: student already exists', 400));
+      next(new StudentAlreadyExistsError());
     }
   });
 }
