@@ -3,6 +3,7 @@ import { Router } from 'express';
 import { PrismaClient } from '@prisma/client';
 import asyncHandler from 'express-async-handler';
 import StudentAlreadyExistsError from '../util/StudentAlreadyExistsError';
+import ClientError from '../util/ClientError';
 
 class StudentController implements IController {
   PATH = '/students';
@@ -22,9 +23,15 @@ class StudentController implements IController {
   getAllStudents = asyncHandler(async (req, res, next) => {
     const students = await this.prisma.student.findMany();
 
-    res.status(200).json({
-      data: students,
-    });
+    if (students.length) {
+      res.status(200).json({
+        data: students,
+      });
+    } else {
+      res.status(200).json({
+        message: 'There are no students currently registered',
+      });
+    }
   });
 
   // @desc Register a new student
