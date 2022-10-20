@@ -29,7 +29,7 @@ model Student {
   work_address   String?
   work_city      String?
   work_state     String?
-  work_zipcode   Int?
+  work_zipcode   String?
   cna_number     String?   @unique
   cna_exp_date   DateTime?
   chha_number    String?   @unique
