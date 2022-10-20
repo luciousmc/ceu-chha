@@ -21,12 +21,14 @@
   "homepage": "https://github.com/luciousmc/ceu-chha#readme",
   "dependencies": {
     "@prisma/client": "^4.2.1",
+    "bcrypt": "^5.1.0",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-async-handler": "^1.2.0",
     "pg": "^8.7.3"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.14",
     "@types/node": "^18.7.13",
     "concurrently": "^7.0.0",
