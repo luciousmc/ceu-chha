@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon server/index.ts",
-    "db:reset": "psql ceu_registration -c '\\i server/db/Schema.sql'",
-    "db:seed": "psql ceu_registration -c '\\i server/db/seed.sql'"
+    "db:migrate": "npx prisma migrate dev --schema ./server/prisma/schema.prisma"
   },
   "repository": {
     "type": "git",
