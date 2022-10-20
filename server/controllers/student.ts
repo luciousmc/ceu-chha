@@ -4,6 +4,7 @@ import { PrismaClient } from '@prisma/client';
 import asyncHandler from 'express-async-handler';
 import StudentAlreadyExistsError from '../util/StudentAlreadyExistsError';
 import ClientError from '../util/ClientError';
+import StudentIdNotFoundError from '../util/StudentIdNotFoundError';
 
 class StudentController implements IController {
   PATH = '/students';
@@ -15,6 +16,16 @@ class StudentController implements IController {
   }
   loadRoutes() {
     this.router.get(this.PATH, this.getAllStudents);
+    this.router.post(this.PATH, this.registerStudent);
+    this.router.delete(`${this.PATH}/:id`, this.deleteStudent);
+  }
+  async getStudentById(id: number) {
+    const result = await this.prisma.student.findFirst({
+      where: {
+        id: id,
+      },
+    });
+    return result;
   }
 
   // @desc Get all students from the database
@@ -40,7 +51,7 @@ class StudentController implements IController {
   registerStudent = asyncHandler(async (req, res, next) => {
     const studentExists = await this.prisma.student.findFirst({
       where: {
-        email: req.body.email,
+        ssn: req.body.ssn,
       },
     });
 
@@ -48,8 +59,34 @@ class StudentController implements IController {
       const result = await this.prisma.student.create({
         data: req.body,
       });
+
+      res.status(201).json(result);
     } else {
       next(new StudentAlreadyExistsError());
+    }
+  });
+
+  // @desc Delete a student
+  // @route DELETE /api/students/:id
+  // @access private(admin)
+  deleteStudent = asyncHandler(async (req, res, next) => {
+    const id = Number(req.params.id);
+
+    if (isNaN(id)) {
+      return next(new ClientError('Invalid Id', 400));
+    }
+
+    const studentExists = await this.getStudentById(id);
+
+    if (studentExists) {
+      await this.prisma.student.delete({
+        where: {
+          id: id,
+        },
+      });
+      res.status(200);
+    } else {
+      next(new StudentIdNotFoundError(id));
     }
   });
 }
