@@ -5,6 +5,7 @@ import asyncHandler from 'express-async-handler';
 import StudentAlreadyExistsError from '../util/StudentAlreadyExistsError';
 import ClientError from '../util/ClientError';
 import StudentIdNotFoundError from '../util/StudentIdNotFoundError';
+import bcrypt from 'bcrypt';
 
 class StudentController implements IController {
   PATH = '/students';
@@ -27,17 +28,27 @@ class StudentController implements IController {
     });
     return result;
   }
+  excludeFields<User, Key extends keyof User>(
+    user: User,
+    ...keys: Key[]
+  ): Omit<User, Key> {
+    for (let key of keys) {
+      delete user[key];
+    }
+    return user;
+  }
 
   // @desc Get all students from the database
   // @route GET /api/students
   // @access private
   getAllStudents = asyncHandler(async (req, res, next) => {
     const students = await this.prisma.student.findMany();
+    const studentsWithoutPasswords = students.map((student) =>
+      this.excludeFields(student, 'password')
+    );
 
     if (students.length) {
-      res.status(200).json({
-        data: students,
-      });
+      res.status(200).json(studentsWithoutPasswords);
     } else {
       res.status(200).json({
         message: 'There are no students currently registered',
@@ -56,11 +67,17 @@ class StudentController implements IController {
     });
 
     if (!studentExists) {
-      const result = await this.prisma.student.create({
-        data: req.body,
-      });
+      const salt = await bcrypt.genSalt(10);
+      const hashedPwd = await bcrypt.hash(req.body.password, salt);
 
-      res.status(201).json(result);
+      await this.prisma.student.create({
+        data: {
+          ...req.body,
+          password: hashedPwd,
+        },
+      });
+      req.body.password = undefined;
+      res.status(201).json(req.body);
     } else {
       next(new StudentAlreadyExistsError());
     }
@@ -84,7 +101,7 @@ class StudentController implements IController {
           id: id,
         },
       });
-      res.status(200);
+      res.status(200).send();
     } else {
       next(new StudentIdNotFoundError(id));
     }
