@@ -6,6 +6,7 @@ import StudentAlreadyExistsError from '../util/StudentAlreadyExistsError';
 import ClientError from '../util/ClientError';
 import StudentIdNotFoundError from '../util/StudentIdNotFoundError';
 import bcrypt from 'bcrypt';
+import { excludeFields } from '../util/prisma.helpers';
 
 class StudentController implements IController {
   PATH = '/students';
@@ -28,15 +29,6 @@ class StudentController implements IController {
     });
     return result;
   }
-  excludeFields<User, Key extends keyof User>(
-    user: User,
-    ...keys: Key[]
-  ): Omit<User, Key> {
-    for (let key of keys) {
-      delete user[key];
-    }
-    return user;
-  }
 
   // @desc Get all students from the database
   // @route GET /api/students
@@ -44,7 +36,7 @@ class StudentController implements IController {
   getAllStudents = asyncHandler(async (req, res, next) => {
     const students = await this.prisma.student.findMany();
     const studentsWithoutPasswords = students.map((student) =>
-      this.excludeFields(student, 'password')
+      excludeFields(student, 'password')
     );
 
     if (students.length) {
