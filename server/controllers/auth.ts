@@ -12,16 +12,17 @@ class AuthController implements IController {
     this.loadRoutes();
   }
   loadRoutes() {
-    this.router.post(`${this.PATH}/register`, this.register);
+    this.router.post(`${this.PATH}/login`, this.login);
+    this.router.post(`${this.PATH}/logout`, this.logout);
   }
 
-  register = asyncHandler(async (req, res, next) => {
-    const userData = req.body;
+  // @desc Logs the user into the app
+  // @route POST /auth/login
+  // @access public
+  login = asyncHandler(async (req, res, next) => {});
 
-    const userExists = await this.prisma.student.findFirst({
-      where: {
-        ssn: req.body.ssn,
-      },
-    });
-  });
+  // @desc Logs the user out of the app
+  // @route POST /auth/logout
+  // @access private
+  logout = asyncHandler(async (req, res, next) => {});
 }
