@@ -52,7 +52,6 @@ class ClassController implements IController {
             am_pm,
           },
         },
-        platform,
       },
     });
 
