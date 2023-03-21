@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = "debian-openssl-1.0.x"
 }
 
 datasource db {
@@ -11,15 +12,15 @@ datasource db {
 }
 
 model Student {
-  id             Int       @id @default(autoincrement())
+  id             Int                 @id @default(autoincrement())
   first_name     String
   last_name      String
   middle_initial String?
   photoURL       String?
   password       String
   birth_date     DateTime
-  ssn            String    @unique
-  email          String?   @unique
+  ssn            String              @unique
+  email          String?             @unique
   phone_number   String
   address        String
   city           String
@@ -30,19 +31,30 @@ model Student {
   work_city      String?
   work_state     String?
   work_zipcode   String?
-  cna_number     String?   @unique
+  cna_number     String?             @unique
   cna_exp_date   DateTime?
-  chha_number    String?   @unique
+  chha_number    String?             @unique
   chha_exp_date  DateTime?
   classes        Class[]
+  registered     RegisteredClasses[]
 }
 
 model Class {
-  id       Int         @id @default(autoincrement())
-  topic    String
-  date     ClassDate[]
-  platform String
-  students Student[]
+  id                Int                 @id @default(autoincrement())
+  topic             String
+  date              ClassDate[]
+  students          Student[]
+  RegisteredClasses RegisteredClasses[]
+}
+
+model RegisteredClasses {
+  id        Int     @id @default(autoincrement())
+  studentId Int
+  Student   Student @relation(fields: [studentId], references: [id])
+  Class     Class   @relation(fields: [classId], references: [id])
+  classId   Int
+  platform  String
+  paid      Boolean
 }
 
 model ClassDate {
