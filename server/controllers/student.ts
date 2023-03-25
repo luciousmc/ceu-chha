@@ -3,7 +3,6 @@ import { Router } from 'express';
 import { PrismaClient } from '@prisma/client';
 import asyncHandler from 'express-async-handler';
 import StudentAlreadyExistsError from '../util/StudentAlreadyExistsError';
-import ClientError from '../util/ClientError';
 import StudentIdNotFoundError from '../util/StudentIdNotFoundError';
 
 class StudentController implements IController {
@@ -16,13 +15,14 @@ class StudentController implements IController {
   }
   loadRoutes() {
     this.router.get(this.PATH, this.getAllStudents);
+    this.router.get(`${this.PATH}/:uid`, this.getStudentById);
     this.router.post(this.PATH, this.registerStudent);
-    this.router.delete(`${this.PATH}/:id`, this.deleteStudent);
+    this.router.delete(`${this.PATH}/:uid`, this.deleteStudent);
   }
-  async getStudentById(id: number) {
+  async checkStudentExists(uid: string) {
     const result = await this.prisma.student.findFirst({
       where: {
-        id: id,
+        id: uid,
       },
     });
     return result;
@@ -35,13 +35,26 @@ class StudentController implements IController {
     const students = await this.prisma.student.findMany();
 
     if (students.length) {
-      res.status(200).json({
-        data: students,
-      });
+      res.status(200).json(students);
     } else {
       res.status(200).json({
         message: 'There are no students currently registered',
       });
+    }
+  });
+
+  // @desc Get a single student object by their Id
+  // @route GET /api/students/:id
+  // @access private
+  getStudentById = asyncHandler(async (req, res, next) => {
+    const uid = req.params.uid;
+
+    const student = await this.checkStudentExists(uid);
+
+    if (student) {
+      res.status(200).json(student);
+    } else {
+      next(new StudentIdNotFoundError(uid));
     }
   });
 
@@ -70,23 +83,19 @@ class StudentController implements IController {
   // @route DELETE /api/students/:id
   // @access private(admin)
   deleteStudent = asyncHandler(async (req, res, next) => {
-    const id = Number(req.params.id);
+    const uid = req.params.uid;
 
-    if (isNaN(id)) {
-      return next(new ClientError('Invalid Id', 400));
-    }
-
-    const studentExists = await this.getStudentById(id);
+    const studentExists = await this.checkStudentExists(uid);
 
     if (studentExists) {
       await this.prisma.student.delete({
         where: {
-          id: id,
+          id: uid,
         },
       });
       res.status(200);
     } else {
-      next(new StudentIdNotFoundError(id));
+      next(new StudentIdNotFoundError(uid));
     }
   });
 }
