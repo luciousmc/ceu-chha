@@ -6,6 +6,7 @@ async function main() {
   const students = await prisma.student.createMany({
     data: [
       {
+        id: 'BK81swg0onO81guNZXUStrqyckv2',
         first_name: 'Marlon',
         middle_initial: 'L',
         last_name: 'Clay',
@@ -20,6 +21,7 @@ async function main() {
         phone_number: '714-470-3829',
       },
       {
+        id: 'E0GPfpKyEafecPk9I5sAL9FzrTs1',
         first_name: 'Shey',
         middle_initial: 'L',
         last_name: 'Maloles',
@@ -34,6 +36,7 @@ async function main() {
         phone_number: '949-958-2751',
       },
       {
+        id: 'AfEoTJSQZyP8J7fnY9aY0zek3ng1',
         first_name: 'Greg',
         middle_initial: 'L',
         last_name: 'Walters',
