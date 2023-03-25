@@ -18,7 +18,7 @@ model Student {
   middle_initial String?
   photoURL       String?
   password       String
-  birth_date     DateTime
+  birth_date     DateTime            @db.Date
   ssn            String              @unique
   email          String?             @unique
   phone_number   String
@@ -32,9 +32,9 @@ model Student {
   work_state     String?
   work_zipcode   String?
   cna_number     String?             @unique
-  cna_exp_date   DateTime?
+  cna_exp_date   DateTime?           @db.Date
   chha_number    String?             @unique
-  chha_exp_date  DateTime?
+  chha_exp_date  DateTime?           @db.Date
   classes        Class[]
   registered     RegisteredClasses[]
 }
@@ -59,7 +59,7 @@ model RegisteredClasses {
 
 model ClassDate {
   id      Int      @id @default(autoincrement())
-  date    DateTime
+  date    DateTime @db.Date
   am_pm   AMPM
   Class   Class?   @relation(fields: [classId], references: [id])
   classId Int?

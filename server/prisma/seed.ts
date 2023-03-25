@@ -10,7 +10,7 @@ async function main() {
         middle_initial: 'L',
         last_name: 'Clay',
         password: 'password',
-        birth_date: '05/16/1984',
+        birth_date: new Date('05/16/1984'),
         ssn: '5469851425',
         address: '147 Briarwood',
         city: 'Irvine',
@@ -23,7 +23,7 @@ async function main() {
         first_name: 'Shey',
         middle_initial: 'L',
         last_name: 'Maloles',
-        birth_date: '10/31/1996',
+        birth_date: new Date('10/31/1996'),
         password: 'password',
         ssn: '4587596321',
         address: '123 Santa Maria',
@@ -37,7 +37,7 @@ async function main() {
         first_name: 'Greg',
         middle_initial: 'L',
         last_name: 'Walters',
-        birth_date: '12/26/1990',
+        birth_date: new Date('12/26/1990'),
         password: 'passsword',
         ssn: '7516324545',
         address: '23 Yo mama Lane',
@@ -54,28 +54,30 @@ async function main() {
     data: {
       topic: 'How to deal with Meds',
       date: {
-        create: [
-          {
-            date: '2023-03-21T08:00:00:00',
-            am_pm: 'AM',
-          },
-          {
-            date: '2023-03-21T13:00:00:00',
-            am_pm: 'PM',
-          },
-          {
-            date: '2023-03-21T08:00:00:00',
-            am_pm: 'AM',
-          },
-          {
-            date: '2023-03-21T08:00:00:00',
-            am_pm: 'AM',
-          },
-          {
-            date: '2023-03-21T13:00:00:00',
-            am_pm: 'PM',
-          },
-        ],
+        createMany: {
+          data: [
+            {
+              date: new Date('2023-03-21T08:00:00'),
+              am_pm: 'AM',
+            },
+            {
+              date: new Date('2023-03-27T13:00:00'),
+              am_pm: 'PM',
+            },
+            {
+              date: new Date('2023-04-11T08:00:00'),
+              am_pm: 'AM',
+            },
+            {
+              date: new Date('2023-05-16T08:00:00'),
+              am_pm: 'AM',
+            },
+            {
+              date: new Date('2023-06-21T13:00:00'),
+              am_pm: 'PM',
+            },
+          ],
+        },
       },
     },
   });
