@@ -40,10 +40,9 @@ export async function createUser(
  */
 export async function signInUser(username: string, password: string) {
   const email = username + '@coasthealthcareercollege.com';
-
   try {
-    await signInWithEmailAndPassword(auth, email, password);
-    return '';
+    const { user } = await signInWithEmailAndPassword(auth, email, password);
+    return user;
   } catch (error: unknown) {
     if (error instanceof Error) {
       const errorMsg = signInErrorHandler(error.message);
