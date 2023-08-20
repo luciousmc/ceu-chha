@@ -35,26 +35,27 @@ model Student {
   cna_exp_date   DateTime?           @db.Date
   chha_number    String?             @unique
   chha_exp_date  DateTime?           @db.Date
-  classes        Class[]
-  registered     RegisteredClasses[]
+  classes        RegisteredClasses[]
 }
 
 model Class {
-  id                Int                 @id @default(autoincrement())
-  topic             String
-  date              ClassDate[]
-  students          Student[]
-  RegisteredClasses RegisteredClasses[]
+  id       Int                 @id @default(autoincrement())
+  topic    String
+  date     ClassDate[]
+  students RegisteredClasses[]
 }
 
 model RegisteredClasses {
-  id        Int     @id @default(autoincrement())
+  createdAt DateTime @default(now())
   studentId String
-  Student   Student @relation(fields: [studentId], references: [id])
-  Class     Class   @relation(fields: [classId], references: [id])
+  student   Student  @relation(fields: [studentId], references: [id])
+  class     Class    @relation(fields: [classId], references: [id])
   classId   Int
-  platform  String
+  platform  platform
   paid      Boolean
+
+  @@id([studentId, classId])
+  @@index([studentId, platform])
 }
 
 model ClassDate {
@@ -68,4 +69,9 @@ model ClassDate {
 enum AMPM {
   AM
   PM
+}
+
+enum platform {
+  Zoom
+  Classroom
 }
