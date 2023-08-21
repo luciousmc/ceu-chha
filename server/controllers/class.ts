@@ -8,6 +8,7 @@ import {
 import asyncHandler from 'express-async-handler';
 import IController from '../interfaces/controller';
 import ClientError from '../util/ClientError';
+import { ClassService } from '../services/class';
 
 // import type { Response, Request, NextFunction } from 'express';
 
@@ -29,8 +30,8 @@ class ClassController implements IController {
   // @route GET /api/classes
   // @access private
   getClasses = asyncHandler(async (req, res) => {
-    const result = await this.prisma.class.findMany();
-    res.status(200).json({ message: 'Success', data: result });
+    const classes = await ClassService.getAllClasses();
+    res.status(200).json({ message: 'Success', data: classes });
   });
 
   // @desc Create a Topic to add to the database
