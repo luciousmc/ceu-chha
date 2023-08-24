@@ -1,8 +1,14 @@
 import { PrismaClient } from '@prisma/client';
+import { Console } from 'console';
 
 const prisma = new PrismaClient();
 
 async function main() {
+  await prisma.registeredClasses.deleteMany({});
+  await prisma.student.deleteMany({});
+  await prisma.class.deleteMany({});
+  await prisma.classDate.deleteMany({});
+
   const students = await prisma.student.createMany({
     data: [
       {
@@ -52,11 +58,12 @@ async function main() {
       },
     ],
   });
+  console.log('created students: ', students);
 
   const class1 = await prisma.class.create({
     data: {
       topic: 'How to deal with Meds',
-      date: {
+      dates_avail: {
         createMany: {
           data: [
             {
@@ -83,7 +90,102 @@ async function main() {
         },
       },
     },
+    include: {
+      dates_avail: true,
+    },
   });
+  const class2 = await prisma.class.create({
+    data: {
+      topic: 'Raising Children with Special Needs',
+      dates_avail: {
+        createMany: {
+          data: [
+            {
+              date: new Date('2023-08-21T08:00:00'),
+              am_pm: 'AM',
+            },
+            {
+              date: new Date('2023-08-21T13:00:00'),
+              am_pm: 'PM',
+            },
+            {
+              date: new Date('2023-04-04T08:00:00'),
+              am_pm: 'AM',
+            },
+            {
+              date: new Date('2023-05-16T08:00:00'),
+              am_pm: 'PM',
+            },
+            {
+              date: new Date('2023-06-30T13:00:00'),
+              am_pm: 'PM',
+            },
+          ],
+        },
+      },
+    },
+    include: {
+      dates_avail: true,
+    },
+  });
+  const class3 = await prisma.class.create({
+    data: {
+      topic: 'How to Care for Old People',
+      dates_avail: {
+        createMany: {
+          data: [
+            {
+              date: new Date('2023-03-21T08:00:00'),
+              am_pm: 'PM',
+            },
+            {
+              date: new Date('2023-03-27T13:00:00'),
+              am_pm: 'AM',
+            },
+            {
+              date: new Date('2023-04-13T08:00:00'),
+              am_pm: 'AM',
+            },
+            {
+              date: new Date('2023-05-19T08:00:00'),
+              am_pm: 'PM',
+            },
+            {
+              date: new Date('2023-06-22T13:00:00'),
+              am_pm: 'PM',
+            },
+          ],
+        },
+      },
+    },
+    include: {
+      dates_avail: true,
+    },
+  });
+  console.log(
+    'created classes: ',
+    JSON.stringify({ class1, class2, class3 }, undefined, 2)
+  );
+
+  const enrollMarlon = await prisma.registeredClasses.create({
+    data: {
+      platform: 'Classroom',
+      paid: true,
+      date: new Date('2023-03-27T13:00:00'),
+      student: {
+        connect: {
+          id: 'BK81swg0onO81guNZXUStrqyckv2',
+        },
+      },
+      class: {
+        connect: {
+          id: 3,
+        },
+      },
+    },
+  });
+
+  console.log('enrolled: ', enrollMarlon);
 }
 
 main()
