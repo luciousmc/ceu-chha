@@ -6,7 +6,7 @@
   "scripts": {
     "server": "nodemon server/index.ts",
     "db:migrate": "npx prisma migrate dev --schema ./server/prisma/schema.prisma",
-    "db:push": "npx prisma db push --schema ./server/prisma/schema.prisma",
+    "db:push": "npx prisma db push --force-reset --schema ./server/prisma/schema.prisma",
     "db:reset": "npx prisma migrate reset --schema ./server/prisma/schema.prisma",
     "db:seed": "npx prisma db seed",
     "db:studio": "npx prisma studio --schema ./server/prisma/schema.prisma"
