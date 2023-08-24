@@ -5,7 +5,11 @@ const prisma = new PrismaClient();
 
 export class ClassService {
   static async getAllClasses() {
-    const result = await prisma.class.findMany();
+    const result = await prisma.class.findMany({
+      include: {
+        dates_avail: true,
+      },
+    });
     return result;
   }
   static async createClass() {}
