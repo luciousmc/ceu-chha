@@ -47,7 +47,7 @@ class ClassController implements IController {
     const result = await this.prisma.class.create({
       data: {
         topic,
-        date: {
+        dates_avail: {
           create: {
             date,
             am_pm,
