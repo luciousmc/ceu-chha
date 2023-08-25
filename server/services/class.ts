@@ -1,5 +1,6 @@
-import { PrismaClient } from '@prisma/client';
-import asyncHandler from 'express-async-handler';
+import { Prisma, PrismaClient } from '@prisma/client';
+import { NextFunction, Request, Response } from 'express';
+import { IClassInfo } from '../interfaces/class.interface';
 
 const prisma = new PrismaClient();
 
@@ -12,7 +13,23 @@ export class ClassService {
     });
     return result;
   }
-  static async createClass() {}
+
+  static async createClass({ topic, dates_avail }: IClassInfo) {
+    const result = await prisma.class.create({
+      data: {
+        topic,
+        dates_avail: {
+          createMany: {
+            data: dates_avail,
+          },
+        },
+      },
+      include: {
+        dates_avail: true,
+      },
+    });
+    return result;
+  }
   static async deleteClass() {}
   static async updateClass() {}
 }
