@@ -14,6 +14,20 @@ export class ClassService {
     return result;
   }
 
+  static async getAllRegisteredClasses() {
+    const result = await prisma.registeredClasses.findMany({
+      include: {
+        student: true,
+        class: {
+          include: {
+            dates_avail: true,
+          },
+        },
+      },
+    });
+    return result;
+  }
+
   static async createClass({ topic, dates_avail }: IClassInfo) {
     const result = await prisma.class.create({
       data: {

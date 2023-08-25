@@ -10,6 +10,7 @@ import IController from '../interfaces/controller';
 import ClientError from '../util/ClientError';
 import { ClassService } from '../services/class';
 import { IClassInfo } from '../interfaces/class.interface';
+import NoRegisteredClassesError from '../util/NoRegisterdClassesError';
 
 // import type { Response, Request, NextFunction } from 'express';
 
@@ -23,6 +24,7 @@ class ClassController implements IController {
   }
   loadRoutes() {
     this.router.get(this.PATH, this.getClasses);
+    this.router.get(`${this.PATH}/registered`, this.getAllRegisteredClasses);
     this.router.post(this.PATH, this.createClass);
     this.router.delete(`${this.PATH}/:id`, this.deleteClass);
   }
@@ -33,6 +35,19 @@ class ClassController implements IController {
   getClasses = asyncHandler(async (req, res) => {
     const classes = await ClassService.getAllClasses();
     res.status(200).json({ message: 'Success', data: classes });
+  });
+
+  // @desc Get all Registered classes
+  // @route GET /api/classes/registered
+  // @access private(admin)
+  getAllRegisteredClasses = asyncHandler(async (req, res, next) => {
+    const classes = await ClassService.getAllRegisteredClasses();
+
+    if (classes.length < 1) {
+      next(new NoRegisteredClassesError());
+    } else {
+      res.status(200).json(classes);
+    }
   });
 
   // @desc Create a Topic to add to the database
