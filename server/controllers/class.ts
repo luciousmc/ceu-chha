@@ -10,7 +10,7 @@ import IController from '../interfaces/controller';
 import ClientError from '../util/ClientError';
 import { ClassService } from '../services/class';
 import { IClassInfo } from '../interfaces/class.interface';
-import NoRegisteredClassesError from '../util/NoRegisterdClassesError';
+import NoRegisteredClassesError from '../util/NoRegisteredClassesError';
 
 // import type { Response, Request, NextFunction } from 'express';
 
