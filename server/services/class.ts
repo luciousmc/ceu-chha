@@ -1,10 +1,19 @@
-import { Prisma, PrismaClient } from '@prisma/client';
-import { NextFunction, Request, Response } from 'express';
+import { PrismaClient } from '@prisma/client';
 import { IClassInfo } from '../interfaces/class.interface';
+import ClassNotFoundError from '../util/ClassNotFoundError';
 
 const prisma = new PrismaClient();
 
 export default class ClassService {
+  static async checkClassExists(id: number) {
+    const result = await prisma.class.findUnique({
+      where: {
+        id,
+      },
+    });
+    return result ? true : false;
+  }
+
   static async getAllClasses() {
     const result = await prisma.class.findMany({
       include: {
@@ -44,6 +53,19 @@ export default class ClassService {
     });
     return result;
   }
-  static async deleteClass() {}
+
+  static async deleteClass(id: number) {
+    if (!this.checkClassExists(id)) {
+      throw new ClassNotFoundError();
+    }
+
+    const result = await prisma.class.delete({
+      where: {
+        id,
+      },
+    });
+
+    return result;
+  }
   static async updateClass() {}
 }

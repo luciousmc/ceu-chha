@@ -25,7 +25,7 @@ class ClassController implements IController {
   // @desc Get all classes
   // @route GET /api/classes
   // @access private
-  getClasses = asyncHandler(async (req, res, next) => {
+  getClasses = asyncHandler(async (req, res) => {
     const classes = await ClassService.getAllClasses();
 
     if (classes.length) {
@@ -36,7 +36,7 @@ class ClassController implements IController {
   // @desc Get all Registered classes
   // @route GET /api/classes/registered
   // @access private(admin)
-  getAllRegisteredClasses = asyncHandler(async (req, res, next) => {
+  getAllRegisteredClasses = asyncHandler(async (req, res) => {
     const classes = await ClassService.getAllRegisteredClasses();
     res.status(200).json(classes);
   });
@@ -44,7 +44,7 @@ class ClassController implements IController {
   // @desc Create a Topic to add to the database
   // @route POST /api/classes
   // @access private(admin)
-  createClass = asyncHandler(async (req, res, next) => {
+  createClass = asyncHandler(async (req, res) => {
     const { topic, dates_avail }: IClassInfo = req.body;
 
     if (!topic || dates_avail.length < 1) {
@@ -62,21 +62,15 @@ class ClassController implements IController {
   // @desc Delete a course from the database
   // @route DELETE /api/courses/:id
   // @access private(admin)
-  deleteClass = asyncHandler(async (req, res, next) => {
+  deleteClass = asyncHandler(async (req, res) => {
     const id = Number(req.params.id);
 
     if (isNaN(id)) {
-      throw new InvalidIdError();
+      throw new InvalidIdError(id);
     }
 
-    const result = await this.prisma.class.delete({
-      where: {
-        id: id,
-      },
-    });
-
-    console.log('result', result);
-
+    const deletedClass = ClassService.deleteClass(id);
+    console.log('result', deletedClass);
     res.status(200).send(`id ${id} deleted from the database`);
   });
 }
