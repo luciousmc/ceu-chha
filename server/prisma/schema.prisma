@@ -63,8 +63,8 @@ model ClassDate {
   id      Int      @id @default(autoincrement())
   date    DateTime @db.Date
   am_pm   AMPM
-  Class   Class?   @relation(fields: [classId], references: [id])
-  classId Int?
+  Class   Class    @relation(fields: [classId], references: [id], onDelete: Cascade)
+  classId Int
 }
 
 enum AMPM {
