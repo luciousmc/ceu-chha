@@ -9,6 +9,7 @@ import asyncHandler from 'express-async-handler';
 import IController from '../interfaces/controller';
 import ClientError from '../util/ClientError';
 import { ClassService } from '../services/class';
+import { IClassInfo } from '../interfaces/class.interface';
 
 // import type { Response, Request, NextFunction } from 'express';
 
@@ -35,30 +36,21 @@ class ClassController implements IController {
   });
 
   // @desc Create a Topic to add to the database
-  // @route GET /api/courses
+  // @route POST /api/classes
   // @access private(admin)
   createClass = asyncHandler(async (req, res, next) => {
-    const { topic, date, am_pm, platform } = req.body;
+    console.log('the body: ', req.body);
+    const { topic, dates_avail }: IClassInfo = req.body;
 
-    if (!topic || !date || !am_pm || !platform) {
+    if (!topic || dates_avail.length < 1) {
       next(new ClientError('Please provide all data', 400));
     }
 
-    const result = await this.prisma.class.create({
-      data: {
-        topic,
-        dates_avail: {
-          create: {
-            date,
-            am_pm,
-          },
-        },
-      },
-    });
+    const createdClass = await ClassService.createClass({ topic, dates_avail });
 
     res.status(201).json({
       message: 'Class Created',
-      data: result,
+      data: createdClass,
     });
   });
 
