@@ -4,7 +4,7 @@ import { IClassInfo } from '../interfaces/class.interface';
 
 const prisma = new PrismaClient();
 
-export class ClassService {
+export default class ClassService {
   static async getAllClasses() {
     const result = await prisma.class.findMany({
       include: {

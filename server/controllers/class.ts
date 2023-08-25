@@ -1,18 +1,11 @@
 import { PrismaClient } from '@prisma/client';
-import {
-  Router,
-  type Response,
-  type Request,
-  type NextFunction,
-} from 'express';
+import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
 import IController from '../interfaces/controller';
-import ClientError from '../util/ClientError';
-import { ClassService } from '../services/class';
+import ClassService from '../services/class';
 import { IClassInfo } from '../interfaces/class.interface';
-import NoRegisteredClassesError from '../util/NoRegisteredClassesError';
-
-// import type { Response, Request, NextFunction } from 'express';
+import InvalidIdError from '../util/InvalidIdError';
+import InsufficientDataError from '../util/InsufficientDataError';
 
 class ClassController implements IController {
   PATH = '/classes';
@@ -32,9 +25,12 @@ class ClassController implements IController {
   // @desc Get all classes
   // @route GET /api/classes
   // @access private
-  getClasses = asyncHandler(async (req, res) => {
+  getClasses = asyncHandler(async (req, res, next) => {
     const classes = await ClassService.getAllClasses();
-    res.status(200).json({ message: 'Success', data: classes });
+
+    if (classes.length) {
+      res.status(200).json({ message: 'Success', data: classes });
+    }
   });
 
   // @desc Get all Registered classes
@@ -42,23 +38,17 @@ class ClassController implements IController {
   // @access private(admin)
   getAllRegisteredClasses = asyncHandler(async (req, res, next) => {
     const classes = await ClassService.getAllRegisteredClasses();
-
-    if (classes.length < 1) {
-      next(new NoRegisteredClassesError());
-    } else {
-      res.status(200).json(classes);
-    }
+    res.status(200).json(classes);
   });
 
   // @desc Create a Topic to add to the database
   // @route POST /api/classes
   // @access private(admin)
   createClass = asyncHandler(async (req, res, next) => {
-    console.log('the body: ', req.body);
     const { topic, dates_avail }: IClassInfo = req.body;
 
     if (!topic || dates_avail.length < 1) {
-      next(new ClientError('Please provide all data', 400));
+      throw new InsufficientDataError();
     }
 
     const createdClass = await ClassService.createClass({ topic, dates_avail });
@@ -72,25 +62,23 @@ class ClassController implements IController {
   // @desc Delete a course from the database
   // @route DELETE /api/courses/:id
   // @access private(admin)
-  deleteClass = asyncHandler(
-    async (req: Request, res: Response, next: NextFunction) => {
-      const id = Number(req.params.id);
+  deleteClass = asyncHandler(async (req, res, next) => {
+    const id = Number(req.params.id);
 
-      if (isNaN(id)) {
-        next(new ClientError('Invalid id', 400));
-      }
-
-      const result = await this.prisma.class.delete({
-        where: {
-          id: id,
-        },
-      });
-
-      console.log('result', result);
-
-      res.status(200).send(`id ${id} deleted from the database`);
+    if (isNaN(id)) {
+      throw new InvalidIdError();
     }
-  );
+
+    const result = await this.prisma.class.delete({
+      where: {
+        id: id,
+      },
+    });
+
+    console.log('result', result);
+
+    res.status(200).send(`id ${id} deleted from the database`);
+  });
 }
 
 export default ClassController;
