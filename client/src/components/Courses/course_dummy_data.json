@@ -10,28 +10,28 @@
   "classes": [
     {
       "topic": "Dealing with Those who have a Terminal Illness",
-      "date": "12/23/21",
+      "date": "2021-12-23T08:00:00.000Z",
       "am_pm": "PM",
       "platform": "Zoom",
       "status": "Paid"
     },
     {
       "topic": "Cystic Fibrosis",
-      "date": "2/23/22",
+      "date": "2022-02-23T08:00:00.000Z",
       "am_pm": "AM",
       "platform": "On-site",
       "status": "Unpaid"
     },
     {
       "topic": "Lung Cancer",
-      "date": "3/23/22",
+      "date": "2022-03-03T08:00:00.000Z",
       "am_pm": "AM",
       "platform": "On-site",
       "status": "Paid"
     },
     {
       "topic": "Psoriasis",
-      "date": "3/23/22",
+      "date": "2022-03-03T08:00:00.000Z",
       "am_pm": "PM",
       "platform": "On-site",
       "status": "Paid"
