@@ -1,9 +1,9 @@
-import { useContext } from 'react';
+import { ReactNode, useContext } from 'react';
 import { Navigate, Route, useLocation } from 'react-router-dom';
 import UserContext from '../context/userContext';
 
 interface AuthUserRedirectProps {
-  children: JSX.Element;
+  children: ReactNode;
   redirectPath: string;
 }
 
