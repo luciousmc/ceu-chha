@@ -1,23 +1,17 @@
-import { useState } from 'react';
-
-// Styled Components
 import { DashboardContainer, DashboardHeader } from './Dashboard.style';
-
-// Components
 import DashboardBanner from '../../components/DashboardBanner';
 import Courses from '../../components/Courses';
-
-// Service Functions
 import { logoutUser } from '../../services/firebase';
-
-// Data
 import dummyData from '../../components/Courses/course_dummy_data.json';
-
-// Material UI
 import { Avatar } from '@mui/material';
+import { type StudentCourseInfo } from '../../components/Courses/Courses.types';
 
 function Dashboard() {
-  const [data] = useState(dummyData);
+  const data = dummyData as unknown as StudentCourseInfo;
+
+  const classes = data.classes.map((course) => {
+    return { ...course, date: new Date(course.date) };
+  });
 
   return (
     <DashboardContainer>
@@ -27,13 +21,13 @@ function Dashboard() {
           <div>
             <Avatar sx={{ width: '25px', height: '25px' }} />
           </div>
-          <p>Marlon Clay</p>
+          <p>{dummyData.first_name}</p>
         </div>
       </DashboardHeader>
 
       <DashboardBanner />
 
-      <Courses classes={data.classes} />
+      <Courses classes={classes} />
     </DashboardContainer>
   );
 }
