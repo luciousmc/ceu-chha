@@ -1,4 +1,4 @@
-import { CourseInfo } from '../../types/class';
+import { type ClassInfo } from '../../types/ClassInfo';
 
 export interface StudentCourseInfo {
   first_name: string;
@@ -9,5 +9,5 @@ export interface StudentCourseInfo {
   chha_exp_date: string;
   registered_classes: number;
   classes_total: number;
-  classes: CourseInfo[];
+  classes: ClassInfo[];
 }
