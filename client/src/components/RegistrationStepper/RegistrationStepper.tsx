@@ -1,33 +1,18 @@
-// React
-import { useContext, useState } from 'react';
-
-// Material UI Components
+import { useState } from 'react';
 import Stepper from '@mui/material/Stepper';
 import StepLabel from '@mui/material/StepLabel';
 import Step from '@mui/material/Step';
 import Button from '@mui/material/Button';
-
-// Context
-import RegisterInfoContext from '../../context/registerInfo';
-
-// Components
 import PersonalInfoForm from './PersonalInfoForm';
 import WorkInfoForm from './WorkInfoForm';
 import CertificateInfoForm from './CertificateInfoForm';
 import ReviewInfo from './ReviewInfo/ReviewInfo';
-
-// Styled Components
 import { StepContainer } from './RegistrationStepper.style';
-
-// Types
-import type { UseRegisterInfoType } from '../../types/registerInfo';
+import { useRegisterInfoContext } from '../../hooks/useRegisterInfoContext';
 
 function RegistrationStepper() {
   const [activeStep, setActiveStep] = useState(0);
-
-  const [values, setValues] = useContext(
-    RegisterInfoContext
-  ) as UseRegisterInfoType;
+  const [values, setValues] = useRegisterInfoContext();
 
   const steps = [
     'Personal Info',
