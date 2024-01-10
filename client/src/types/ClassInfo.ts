@@ -1,4 +1,4 @@
-export interface CourseInfo {
+export interface ClassInfo {
   topic: string;
   date: Date;
   am_pm: string;

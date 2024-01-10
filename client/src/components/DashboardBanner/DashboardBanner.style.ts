@@ -44,7 +44,7 @@ export const StudentInfo = styled.div`
   gap: 1rem;
 `;
 
-export const ClassInfo = styled.div`
+export const ClassInfoContainer = styled.div`
   display: flex;
 
   div:first-child {

@@ -1,5 +1,5 @@
 import {
-  ClassInfo,
+  ClassInfoContainer,
   DashboardBannerContainer,
   ImgPlaceholder,
   StudentInfo,
@@ -24,7 +24,7 @@ function DashboardBanner() {
             </ul>
           </div>
         </StudentInfo>
-        <ClassInfo>
+        <ClassInfoContainer>
           <div>
             <p>3</p>
             <span>Classes Registered</span>
@@ -33,7 +33,7 @@ function DashboardBanner() {
             <p>23</p>
             <span>Classes Taken</span>
           </div>
-        </ClassInfo>
+        </ClassInfoContainer>
       </Wrapper>
     </DashboardBannerContainer>
   );
