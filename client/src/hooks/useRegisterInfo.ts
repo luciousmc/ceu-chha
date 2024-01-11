@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { studentInfoType } from '../types/studentInfo';
+import { StudentInfoType } from '../types/studentInfo';
 
-function useRegisterInfo(state: studentInfoType) {
-  return useState<studentInfoType>(state);
+function useRegisterInfo(state: StudentInfoType) {
+  return useState<StudentInfoType>(state);
 }
 
 export default useRegisterInfo;
