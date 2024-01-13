@@ -32,17 +32,17 @@ function PersonalInfoForm() {
 
   return (
     <PersonalInfoFormContainer>
-      <FormHeader title='Your Personal Info' />
+      <FormHeader title="Your Personal Info" />
 
       <form>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={5}>
             <TextField
-              size='small'
+              size="small"
               required
-              name='std_fName'
-              label='First Name'
-              id='firstName'
+              name="std_fName"
+              label="First Name"
+              id="firstName"
               onChange={handleChange}
               value={formValues.std_fName}
               fullWidth
@@ -50,21 +50,21 @@ function PersonalInfoForm() {
           </Grid>
           <Grid item xs={12} sm={2}>
             <TextField
-              size='small'
-              name='std_middleInitial'
-              label='M.I.'
-              id='middleInitial'
+              size="small"
+              name="std_middleInitial"
+              label="M.I."
+              id="middleInitial"
               onChange={handleChange}
               value={formValues.std_middleInitial}
             />
           </Grid>
           <Grid item xs={12} sm={5}>
             <TextField
-              size='small'
+              size="small"
               required
-              name='std_lName'
-              label='Last Name'
-              id='lastName'
+              name="std_lName"
+              label="Last Name"
+              id="lastName"
               onChange={handleChange}
               value={formValues.std_lName}
               fullWidth
@@ -73,13 +73,13 @@ function PersonalInfoForm() {
 
           <Grid item xs={6}>
             <TextField
-              size='small'
+              size="small"
               required
-              name='std_birthDate'
-              type='date'
+              name="std_birthDate"
+              type="date"
               InputLabelProps={{ shrink: true }}
-              label='Birth Date'
-              id='birthDate'
+              label="Birth Date"
+              id="birthDate"
               onChange={handleChange}
               value={formValues.std_birthDate}
               fullWidth
@@ -87,11 +87,11 @@ function PersonalInfoForm() {
           </Grid>
           <Grid item xs={6}>
             <TextField
-              size='small'
+              size="small"
               required
-              name='std_ssn'
-              label='Social Security #'
-              id='ssn'
+              name="std_ssn"
+              label="Social Security #"
+              id="ssn"
               onChange={handleChange}
               value={formValues.std_ssn}
               fullWidth
@@ -100,11 +100,11 @@ function PersonalInfoForm() {
 
           <Grid item xs={12}>
             <TextField
-              size='small'
+              size="small"
               required
-              name='std_address'
-              label='Address'
-              id='address'
+              name="std_address"
+              label="Address"
+              id="address"
               onChange={handleChange}
               value={formValues.std_address}
               fullWidth
@@ -113,11 +113,11 @@ function PersonalInfoForm() {
 
           <Grid item xs={12} sm={4}>
             <TextField
-              size='small'
+              size="small"
               required
-              name='std_city'
-              label='City'
-              id='city'
+              name="std_city"
+              label="City"
+              id="city"
               onChange={handleChange}
               value={formValues.std_city}
               fullWidth
@@ -125,11 +125,11 @@ function PersonalInfoForm() {
           </Grid>
           <Grid item xs={6} sm={4}>
             <TextField
-              size='small'
+              size="small"
               required
-              name='std_state'
-              label='State'
-              id='state'
+              name="std_state"
+              label="State"
+              id="state"
               onChange={handleChange}
               value={formValues.std_state}
               fullWidth
@@ -137,11 +137,11 @@ function PersonalInfoForm() {
           </Grid>
           <Grid item xs={6} sm={4}>
             <TextField
-              size='small'
+              size="small"
               required
-              name='std_zip'
-              label='Zip Code'
-              id='zipCode'
+              name="std_zip"
+              label="Zip Code"
+              id="zipCode"
               onChange={handleChange}
               value={formValues.std_zip}
               fullWidth
@@ -150,10 +150,10 @@ function PersonalInfoForm() {
 
           <Grid item xs={6}>
             <TextField
-              size='small'
-              name='std_email'
-              label='Email'
-              id='email'
+              size="small"
+              name="std_email"
+              label="Email"
+              id="email"
               onChange={handleChange}
               value={formValues.std_email}
               fullWidth
@@ -161,11 +161,11 @@ function PersonalInfoForm() {
           </Grid>
           <Grid item xs={6}>
             <TextField
-              size='small'
+              size="small"
               required
-              name='std_phoneNum'
-              label='Tel #'
-              id='phone'
+              name="std_phoneNum"
+              label="Tel #"
+              id="phone"
               onChange={handleChange}
               value={formValues.std_phoneNum}
               fullWidth
