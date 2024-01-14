@@ -1,3 +1,4 @@
+import { type StudentCourseInfo } from '../ClassTable/ClassTable.types';
 import {
   ClassInfoContainer,
   DashboardBannerContainer,
@@ -6,7 +7,7 @@ import {
   Wrapper,
 } from './DashboardBanner.style';
 
-function DashboardBanner() {
+function DashboardBanner({ userInfo }: { userInfo: StudentCourseInfo }) {
   return (
     <DashboardBannerContainer>
       <Wrapper>
@@ -15,22 +16,24 @@ function DashboardBanner() {
             <ImgPlaceholder />
           </div>
           <div>
-            <h2>Hello, Marlon Clay</h2>
+            <h2>
+              Hello, {userInfo.first_name} {userInfo.last_name}
+            </h2>
             <ul>
-              <li>CEU License: 5648542139</li>
-              <li>CHHA License: 455645154</li>
-              <li>&ensp;Expires: 12/22/2022</li>
-              <li>&ensp;Expires: 12/22/2022</li>
+              <li>CEU License: {userInfo.ceu_license_num}</li>
+              <li>CHHA License: {userInfo.chha_license_num}</li>
+              <li>&ensp;Expires: {userInfo.ceu_exp_date}</li>
+              <li>&ensp;Expires: {userInfo.chha_exp_date}</li>
             </ul>
           </div>
         </StudentInfo>
         <ClassInfoContainer>
           <div>
-            <p>3</p>
+            <p>{userInfo.registered_classes}</p>
             <span>Classes Registered</span>
           </div>
           <div>
-            <p>23</p>
+            <p>{userInfo.classes_total}</p>
             <span>Classes Taken</span>
           </div>
         </ClassInfoContainer>

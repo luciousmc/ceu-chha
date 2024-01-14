@@ -1,10 +1,10 @@
 import { DashboardContainer, DashboardHeader } from './Dashboard.style';
 import DashboardBanner from '../../components/DashboardBanner';
 import { logoutUser } from '../../services/firebase';
-import dummyData from '../../components/Classes/course_dummy_data.json';
+import dummyData from '../../components/ClassTable/course_dummy_data.json';
 import { Avatar } from '@mui/material';
-import { type StudentCourseInfo } from '../../components/Classes/ClassTable.types';
-import { ClassTable } from '../../components/Classes/ClassTable';
+import { type StudentCourseInfo } from '../../components/ClassTable/ClassTable.types';
+import { ClassTable } from '../../components/ClassTable/ClassTable';
 
 function Dashboard() {
   const data = dummyData as unknown as StudentCourseInfo;
@@ -21,11 +21,11 @@ function Dashboard() {
           <div>
             <Avatar sx={{ width: '25px', height: '25px' }} />
           </div>
-          <p>{dummyData.first_name}</p>
+          <p>{data.first_name}</p>
         </div>
       </DashboardHeader>
 
-      <DashboardBanner />
+      <DashboardBanner userInfo={data} />
 
       <ClassTable classes={classes} />
     </DashboardContainer>
